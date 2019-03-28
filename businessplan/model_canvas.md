@@ -1,6 +1,6 @@
 Gruppe: h0urTime
 
-Mitglieder: Patrick Ciora, Kai Paule, Thai-Than Mien
+Mitglieder: Patrick Ciora, Kai Paule, Thai-Thanh Michel
 
 ## Motivation:
 
