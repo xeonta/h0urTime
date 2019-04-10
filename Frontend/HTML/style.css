@@ -1,0 +1,38 @@
+#sidebar-wrapper{
+    position: absolute;
+    width: 60px;
+    height: 100%;
+    background: #343a40;
+}
+
+#page-wrapper{
+    width: 100%;
+    position: relative;
+    padding: 15px;
+    margin-left: 60px;
+}
+
+#footer-wrapper{
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+}
+
+.sidebar-nav{
+    padding: 0;
+    list-style: none;
+}
+
+.sidebar-nav li{
+    color: white;
+    font-size: 30px;
+    text-align: center;
+}
+
+.sidebar-nav li a:link, a:visited{
+    color: white;
+}
+
+.sidebar-nav li a:hover{
+    color: blue;
+}
