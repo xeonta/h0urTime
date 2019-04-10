@@ -2,6 +2,16 @@ body {
 
 }
 
+.awesome {
+    background-color: #3377ff;
+}
+
+.text {
+    color: white;
+    text-align: center;
+    
+}
+
 h1.title {
     font-family: 'Roboto', sans-serif;
     font-weight: 900;
