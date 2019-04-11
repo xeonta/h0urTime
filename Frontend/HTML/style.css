@@ -1,21 +1,9 @@
 #sidebar-wrapper{
     position: absolute;
-    width: 60px;
+    width: 65px;
     height: 100%;
     background: #343a40;
-}
-
-#page-wrapper{
-    width: 100%;
-    position: relative;
-    padding: 15px;
-    margin-left: 60px;
-}
-
-#footer-wrapper{
-    width: 100%;
-    position: absolute;
-    bottom: 0;
+    position: fixed;
 }
 
 .sidebar-nav{
@@ -25,7 +13,7 @@
 
 .sidebar-nav li{
     color: white;
-    font-size: 30px;
+    font-size: 200%;
     text-align: center;
 }
 
@@ -34,5 +22,5 @@
 }
 
 .sidebar-nav li a:hover{
-    color: blue;
+    color: orange;
 }
