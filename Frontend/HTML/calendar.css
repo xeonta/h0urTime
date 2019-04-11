@@ -1,14 +1,9 @@
-body {
-
-}
-
-.awesome {
+#demo {
+    float: right;
+    width: 100%;
     background-color: #3377ff;
-}
-
-.text {
     color: white;
-    text-align: center;
+    text-align: center; 
     
 }
 
@@ -16,9 +11,10 @@ h1.title {
     font-family: 'Roboto', sans-serif;
     font-weight: 900;
 }
-body > .calendar {
-    margin: 0px 15px;
+body > .calendar {    
+    float: right;
 }
+
 .popover.calendar-event-popover {
     font-family: 'Roboto', sans-serif;
     font-size: 12px;
@@ -56,10 +52,7 @@ body > .calendar {
     font-size: 18px;
     padding: 0px 10px 5px;
 }
-.popover.calendar-event-popover .attending img {
-    border-radius: 50%;
-    width: 40px;
-}
+
 .popover.calendar-event-popover .attending span.attending-overflow {
     display: inline-block;
     width: 40px;
