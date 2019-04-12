@@ -4,6 +4,13 @@
     position: fixed;
 }
 
+#sidebar-wrapper img {
+    margin-top: 5%;
+    margin-bottom: 5%;
+    /*position: absolute;
+    left: 0;*/ /* Correct Positioning screen width small */
+}
+
 .sidebar-nav{
     padding: 0;
     list-style: none;
@@ -12,7 +19,7 @@
 .sidebar-nav li{
     color: white;
     font-size: 200%;
-    text-align: center;    
+    text-align: center;  
 }
 
 .sidebar-nav > li:first-child{
