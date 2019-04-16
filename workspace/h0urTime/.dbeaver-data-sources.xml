@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<data-sources>
+	<data-source id="sqlite_jdbc-16a251676b0-41237cf6f80bb77a" provider="generic" driver="sqlite_jdbc" name="SQLite - eventcalendar.sqlite" save-password="true" read-only="false">
+		<connection server="" database="C:\temp\eventcalendar.sqlite" url="jdbc:sqlite:C:\temp\eventcalendar.sqlite" type="dev"/>
+	</data-source>
+	<filters/>
+</data-sources>
