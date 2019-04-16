@@ -1,10 +1,328 @@
 <!DOCTYPE html>
-<html>
+<html lang="de">
+
 <head>
-<meta charset="ISO-8859-1">
-<title>Insert title here</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="css/style.css" type="text/css" />
+	<link rel="stylesheet" href="css/calendar.css" type="text/css">
+	<!-- Latest compiled and minified CSS -->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+	<!-- jQuery library -->
+	<script src="js/jquery-3.3.1.min.js"></script>
+	<!-- Latest compiled JavaScript -->
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+	<!-- Font-Awesome Icons 5.8.1 -->
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
+		integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+
+	
+
 </head>
+
 <body>
-Placeholder
+
+		<nav id="sidebar-wrapper" class="col-sm-1">
+				<ul class="sidebar-nav">
+					<li>
+						<a href="index.html"><img src="./img/logo.png" alt="logo"></a>
+					</li>
+					<li>
+						<a href="index.html"><i class="far fa-calendar-alt icon"></i></a>
+					</li>
+					<li>
+						<a href="overview.html"><i class="fas fa-list"></i></a>
+					</li>
+					<li>
+						<a href="category.html"><i class="far fa-check-square"></i></a>
+					</li>
+					<li>
+						<a href="share.html"><i class="fas fa-user-friends"></i></a>
+					</li>
+					<li>
+						<a href="settings.html"><i class="fas fa-cog"></i></a>
+					</li>
+				</ul>
+			</nav>
+
+	<div id="demo" class="carousel slide col-sm-11" data-ride="carousel">
+
+		<!-- Left and right controls -->
+
+		<!-- Indicators -->
+		<!-- <ul class="carousel-indicators">
+				  <li data-target="#demo" data-slide-to="0" class="active"></li>
+				  <li data-target="#demo" data-slide-to="1"></li>
+				  <li data-target="#demo" data-slide-to="2"></li>
+				</ul>-->
+
+		<!-- The slideshow -->
+		<div class="carousel-inner">
+			<div class="carousel-item active">
+				<h1 class="title text-center"> Januar 2014 </h1>
+			</div>
+			<div class="carousel-item">
+				<h1 class="title text-center"> Februar 2014 </h1>
+			</div>
+			<div class="carousel-item">
+				<h1 class="title text-center"> März 2014 </h1>
+			</div>
+			<div class="carousel-item">
+				<h1 class="title text-center"> April 2014 </h1>
+			</div>
+			<div class="carousel-item">
+				<h1 class="title text-center"> Mai 2014 </h1>
+			</div>
+			<div class="carousel-item">
+				<h1 class="title text-center"> Juni 2014 </h1>
+			</div>
+			<div class="carousel-item">
+				<h1 class="title text-center"> Juli 2014 </h1>
+			</div>
+			<div class="carousel-item">
+				<h1 class="title text-center"> August 2014 </h1>
+			</div>
+			<div class="carousel-item">
+				<h1 class="title text-center"> September 2014 </h1>
+			</div>
+			<div class="carousel-item">
+				<h1 class="title text-center"> Oktober 2014 </h1>
+			</div>
+			<div class="carousel-item">
+				<h1 class="title text-center"> November 2014 </h1>
+			</div>
+			<div class="carousel-item">
+				<h1 class="title text-center"> Dezember 2014 </h1>
+			</div>
+
+
+			<a class="carousel-control-prev" href="#demo" data-slide="prev">
+				<i class="fas fa-chevron-circle-left fa-2x"></i>
+			</a>
+			<a class="carousel-control-next" href="#demo" data-slide="next">
+				<i class="fas fa-chevron-circle-right fa-2x"></i>
+			</a>
+
+		</div>
+	</div>
+
+	<div class="calendar col-sm-11" data-toggle="calendar">
+		<div class="row">
+			<div class="calendar-day calendar-no-current-month">
+				29
+			</div>
+			<div class="col-xs-12 calendar-day calendar-no-current-month">
+				30
+			</div>
+			<div class="col-xs-12 calendar-day">
+				01
+				<button class="btn shadow-none"
+					onclick=" window.open(this.href,'targetWindow','toolbar=no,location=no,status=no,menubar=no,scrollbars=yes,resizable=yes,width=100px,height=100px')"><i
+						class="fas fa-plus"></i></button>
+			</div>
+			<div class="col-xs-12 calendar-day nana">
+				02
+				<button class="btn shadow-none"
+					onclick=" window.open(this.href,'targetWindow','toolbar=no,location=no,status=no,menubar=no,scrollbars=yes,resizable=yes,width=100px,height=100px')"><i
+						class="fas fa-plus"></i></button>
+			</div>
+			<div class="col-xs-12 calendar-day nana">
+				03
+				<button class="btn shadow-none"
+					onclick=" window.open(this.href,'targetWindow','toolbar=no,location=no,status=no,menubar=no,scrollbars=yes,resizable=yes,width=100px,height=100px')"><i
+						class="fas fa-plus"></i></button>
+			</div>
+			<div class="col-xs-12 calendar-day nana">
+				04
+				<button class="btn shadow-none"
+					onclick=" window.open(this.href,'targetWindow','toolbar=no,location=no,status=no,menubar=no,scrollbars=yes,resizable=yes,width=100px,height=100px')"><i
+						class="fas fa-plus"></i></button>
+			</div>
+			<div class="col-xs-12 calendar-day nana">
+				05
+				<button class="btn shadow-none"
+					onclick=" window.open(this.href,'targetWindow','toolbar=no,location=no,status=no,menubar=no,scrollbars=yes,resizable=yes,width=100px,height=100px')"><i
+						class="fas fa-plus"></i></button>
+			</div>
+			<div class="col-xs-12 calendar-day nana">
+				06
+				<button class="btn shadow-none"
+					onclick=" window.open(this.href,'targetWindow','toolbar=no,location=no,status=no,menubar=no,scrollbars=yes,resizable=yes,width=100px,height=100px')"><i
+						class="fas fa-plus"></i></button>
+			</div>
+			<div class="col-xs-12 calendar-day nana">
+				07
+				<button class="btn shadow-none"
+					onclick=" window.open(this.href,'targetWindow','toolbar=no,location=no,status=no,menubar=no,scrollbars=yes,resizable=yes,width=100px,height=100px')"><i
+						class="fas fa-plus"></i></button>
+			</div>
+			<div class="col-xs-12 calendar-day nana">
+				08
+				<button class="btn shadow-none"
+					onclick=" window.open(this.href,'targetWindow','toolbar=no,location=no,status=no,menubar=no,scrollbars=yes,resizable=yes,width=100px,height=100px')"><i
+						class="fas fa-plus"></i></button>
+			</div>
+			<div class="col-xs-12 calendar-day nana">
+				09
+				<button class="btn shadow-none"
+					onclick=" window.open(this.href,'targetWindow','toolbar=no,location=no,status=no,menubar=no,scrollbars=yes,resizable=yes,width=100px,height=100px')"><i
+						class="fas fa-plus"></i></button>
+			</div>
+			<div class="col-xs-12 calendar-day nana">
+				10
+				<button class="btn shadow-none"
+					onclick=" window.open(this.href,'targetWindow','toolbar=no,location=no,status=no,menubar=no,scrollbars=yes,resizable=yes,width=100px,height=100px')"><i
+						class="fas fa-plus"></i></button>
+			</div>
+			<div class="col-xs-12 calendar-day nana">
+				11
+				<button class="btn shadow-none"
+					onclick=" window.open(this.href,'targetWindow','toolbar=no,location=no,status=no,menubar=no,scrollbars=yes,resizable=yes,width=100px,height=100px')"><i
+						class="fas fa-plus"></i></button>
+			</div>
+			<div class="col-xs-12 calendar-day nana">
+				12
+				<button class="btn shadow-none"
+					onclick=" window.open(this.href,'targetWindow','toolbar=no,location=no,status=no,menubar=no,scrollbars=yes,resizable=yes,width=100px,height=100px')"><i
+						class="fas fa-plus"></i></button>
+			</div>
+			<div class="col-xs-12 calendar-day nana">
+				13
+				<button class="btn shadow-none"
+					onclick=" window.open(this.href,'targetWindow','toolbar=no,location=no,status=no,menubar=no,scrollbars=yes,resizable=yes,width=100px,height=100px')"><i
+						class="fas fa-plus"></i></button>
+			</div>
+			<div class="col-xs-12 calendar-day nana">
+				14
+				<button class="btn shadow-none"
+					onclick=" window.open(this.href,'targetWindow','toolbar=no,location=no,status=no,menubar=no,scrollbars=yes,resizable=yes,width=100px,height=100px')"><i
+						class="fas fa-plus"></i></button>
+			</div>
+			<div class="col-xs-12 calendar-day nana">
+				15
+				<button class="btn shadow-none"
+					onclick=" window.open(this.href,'targetWindow','toolbar=no,location=no,status=no,menubar=no,scrollbars=yes,resizable=yes,width=100px,height=100px')"><i
+						class="fas fa-plus"></i></button>
+				<div class="events">
+					<div class="event">
+						<h4>Test</h4>
+					</div>
+				</div>
+			</div>
+			<div class="col-xs-12 calendar-day nana">
+				16
+				<button class="btn shadow-none"
+					onclick=" window.open(this.href,'targetWindow','toolbar=no,location=no,status=no,menubar=no,scrollbars=yes,resizable=yes,width=100px,height=100px')"><i
+						class="fas fa-plus"></i></button>
+			</div>
+			<div class="col-xs-12 calendar-day nana">
+				17
+				<button class="btn shadow-none"
+					onclick=" window.open(this.href,'targetWindow','toolbar=no,location=no,status=no,menubar=no,scrollbars=yes,resizable=yes,width=100px,height=100px')"><i
+						class="fas fa-plus"></i></button>
+			</div>
+			<div class="col-xs-12 calendar-day nana">
+				18
+				<button class="btn shadow-none"
+					onclick=" window.open(this.href,'targetWindow','toolbar=no,location=no,status=no,menubar=no,scrollbars=yes,resizable=yes,width=100px,height=100px')"><i
+						class="fas fa-plus"></i></button>
+			</div>
+			<div class="col-xs-12 calendar-day nana">
+				19
+				<button class="btn shadow-none"
+					onclick=" window.open(this.href,'targetWindow','toolbar=no,location=no,status=no,menubar=no,scrollbars=yes,resizable=yes,width=100px,height=100px')"><i
+						class="fas fa-plus"></i></button>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-xs-12 calendar-day nana">
+				20
+				<button class="btn shadow-none"
+					onclick=" window.open(this.href,'targetWindow','toolbar=no,location=no,status=no,menubar=no,scrollbars=yes,resizable=yes,width=100px,height=100px')"><i
+						class="fas fa-plus"></i></button>
+			</div>
+			<div class="col-xs-12 calendar-day nana">
+				21
+				<button class="btn shadow-none"
+					onclick=" window.open(this.href,'targetWindow','toolbar=no,location=no,status=no,menubar=no,scrollbars=yes,resizable=yes,width=100px,height=100px')"><i
+						class="fas fa-plus"></i></button>
+			</div>
+			<div class="col-xs-12 calendar-day nana">
+				22
+				<button class="btn shadow-none"
+					onclick=" window.open(this.href,'targetWindow','toolbar=no,location=no,status=no,menubar=no,scrollbars=yes,resizable=yes,width=100px,height=100px')"><i
+						class="fas fa-plus"></i></button>
+			</div>
+			<div class="col-xs-12 calendar-day nana">
+				23
+				<button class="btn shadow-none"
+					onclick=" window.open(this.href,'targetWindow','toolbar=no,location=no,status=no,menubar=no,scrollbars=yes,resizable=yes,width=100px,height=100px')"><i
+						class="fas fa-plus"></i></button>
+			</div>
+			<div class="col-xs-12 calendar-day nana">
+				24
+				<button class="btn shadow-none"
+					onclick=" window.open(this.href,'targetWindow','toolbar=no,location=no,status=no,menubar=no,scrollbars=yes,resizable=yes,width=100px,height=100px')"><i
+						class="fas fa-plus"></i></button>
+			</div>
+			<div class="col-xs-12 calendar-day nana">
+				25
+				<button class="btn shadow-none"
+					onclick=" window.open(this.href,'targetWindow','toolbar=no,location=no,status=no,menubar=no,scrollbars=yes,resizable=yes,width=100px,height=100px')"><i
+						class="fas fa-plus"></i></button>
+			</div>
+			<div class="col-xs-12 calendar-day nana">
+				26
+				<button class="btn shadow-none"
+					onclick=" window.open(this.href,'targetWindow','toolbar=no,location=no,status=no,menubar=no,scrollbars=yes,resizable=yes,width=100px,height=100px')"><i
+						class="fas fa-plus"></i></button>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-xs-12 calendar-day nana">
+				27
+				<button class="btn shadow-none"
+					onclick=" window.open(this.href,'targetWindow','toolbar=no,location=no,status=no,menubar=no,scrollbars=yes,resizable=yes,width=100px,height=100px')"><i
+						class="fas fa-plus"></i></button>
+			</div>
+			<div class="col-xs-12 calendar-day nana">
+				28
+				<button class="btn shadow-none"
+					onclick=" window.open(this.href,'targetWindow','toolbar=no,location=no,status=no,menubar=no,scrollbars=yes,resizable=yes,width=100px,height=100px')"><i
+						class="fas fa-plus"></i></button>
+			</div>
+			<div class="col-xs-12 calendar-day nana">
+				29
+				<button class="btn shadow-none"
+					onclick=" window.open(this.href,'targetWindow','toolbar=no,location=no,status=no,menubar=no,scrollbars=yes,resizable=yes,width=100px,height=100px')"><i
+						class="fas fa-plus"></i></button>
+			</div>
+			<div class="col-xs-12 calendar-day nana">
+				30
+				<button class="btn shadow-none"
+					onclick=" window.open(this.href,'targetWindow','toolbar=no,location=no,status=no,menubar=no,scrollbars=yes,resizable=yes,width=100px,height=100px')"><i
+						class="fas fa-plus"></i></button>
+			</div>
+			<div class="col-xs-12 calendar-day nana">
+				31
+				<button class="btn shadow-none"
+					onclick=" window.open(this.href,'targetWindow','toolbar=no,location=no,status=no,menubar=no,scrollbars=yes,resizable=yes,width=100px,height=100px')"><i
+						class="fas fa-plus"></i></button>
+			</div>
+			<div class="col-xs-12 calendar-day calendar-no-current-month">
+				01
+			</div>
+			<div class="col-xs-12 calendar-day calendar-no-current-month">
+				02
+			</div>
+		</div>
+	</div>
+	<script>
+		$(document).ready(function () {
+			$("#demo").carousel("pause");
+		});
+	</script>
 </body>
+
 </html>
