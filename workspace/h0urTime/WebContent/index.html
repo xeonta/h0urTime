@@ -16,22 +16,35 @@
 
 <body>
 
-	<nav id="sidebar-wrapper" class="col-sm-1">
-		<ul class="sidebar-nav">
-			<li><a href="index.html"><img src="./img/logo.png"
-					alt="logo"></a></li>
-			<li><a href="index.html"><i class="far fa-calendar-alt icon"></i></a>
-			</li>
-			<li><a href="overview.html"><i class="fas fa-list"></i></a></li>
-			<li><a href="category.html"><i class="far fa-check-square"></i></a>
-			</li>
-			<li><a href="share.html"><i class="fas fa-user-friends"></i></a>
-			</li>
-			<li><a href="settings.html"><i class="fas fa-cog"></i></a></li>
-		</ul>
+	<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+		<a class="navbar-brand" href="index.html">h0urtime</a>
+		<button class="navbar-toggler" type="button" data-toggle="collapse"
+			data-target="#navbarNav" aria-controls="navbarNav"
+			aria-expanded="false" aria-label="Toggle navigation">
+			<span class="navbar-toggler-icon"></span>
+		</button>
+		<div class="collapse navbar-collapse" id="navbarNav">
+			<ul class="navbar-nav">
+				<li class="nav-item">
+					<a class="nav-link" href="index.html"><i class="far fa-calendar-alt"></i> Calendar</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="overview.html"><i class="fas fa-list"></i> Overview</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="category.html"><i class="far fa-check-square"></i> Category</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="share.html"><i class="fas fa-user-friends"></i> Share</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="settings.html"><i class="fas fa-cog"></i> Settings</a>
+				</li>
+			</ul>
+		</div>
 	</nav>
 
-	<div id="demo" class="carousel slide col-sm-11" data-ride="carousel">
+	<div id="demo" data-ride="carousel">
 
 		<!-- Left and right controls -->
 
@@ -91,7 +104,7 @@
 		</div>
 	</div>
 
-	<div class="calendar col-sm-11" data-toggle="calendar">
+	<div class="calendar col-sm-12" data-toggle="calendar">
 		<div class="row">
 			<div class="calendar-day calendar-no-current-month">29</div>
 			<div class="col-xs-12 calendar-day calendar-no-current-month">

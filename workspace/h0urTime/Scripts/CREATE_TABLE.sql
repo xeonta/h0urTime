@@ -1,7 +1,8 @@
 CREATE TABLE 'events' (
 	'id' INTEGER NOT NULL PRIMARY KEY,
-	'date' DATE NOT NULL,
+	'datestart' DATETIME NOT NULL,
+	'datestop' DATETIME NOT NULL,
 	'title' TEXT NOT NULL,
 	'description' BLOB,
-	'category' TEXT
+	'category' TEXT NOT NULL
 );
