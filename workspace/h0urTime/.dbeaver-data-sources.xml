@@ -6,5 +6,8 @@
 	<data-source id="sqlite_jdbc-16a262937a8-50198727aedbf3be" provider="generic" driver="sqlite_jdbc" name="SQLite - eventcalendar.sqlite 2" save-password="true" read-only="false">
 		<connection server="" database="C:\temp\eventcalendar.sqlite" url="jdbc:sqlite:C:\temp\eventcalendar.sqlite" type="dev"/>
 	</data-source>
+	<data-source id="sqlite_jdbc-16a53818a68-c0569cf5dbd0e4a" provider="generic" driver="sqlite_jdbc" name="SQLite - eventcalendar.sqlite 3" save-password="true" read-only="false">
+		<connection server="" database="C:\temp\eventcalendar.sqlite" url="jdbc:sqlite:C:\temp\eventcalendar.sqlite" type="dev"/>
+	</data-source>
 	<filters/>
 </data-sources>
