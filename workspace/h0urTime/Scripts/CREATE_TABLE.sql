@@ -1,8 +1,20 @@
+CREATE TABLE 'user' (
+	'userid' INTEGER NOT NULL PRIMARY KEY,
+	'name' TEXT NOT NULL
+)
+
+CREATE TABLE 'category' (
+	'categoryid' INTEGER NOT NULL PRIMARY KEY,
+	'name' TEXT NOT NULL,
+	'color' TEXT NOT NULL
+)
+
 CREATE TABLE 'events' (
-	'id' INTEGER NOT NULL PRIMARY KEY,
+	'eventid' INTEGER NOT NULL PRIMARY KEY,
+	'userid' INTEGER NOT NULL,
 	'datestart' DATETIME NOT NULL,
 	'datestop' DATETIME NOT NULL,
 	'title' TEXT NOT NULL,
 	'description' BLOB,
-	'category' TEXT NOT NULL
+	'categoryid' INTEGER
 );
