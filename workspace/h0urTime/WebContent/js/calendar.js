@@ -1,7 +1,24 @@
+$(onDocumentReady);
+
+function onDocumentReady() {
+	loadDates();
+	connectReloadButton();
+}
+
+function loadDates() {
+	let getDatesMonth = $.get("calendarservice/dates");
+
+}
+
+function connectReloadButton() {
+	var button = $("#reload-button");
+	button.click(loadDates);
+}
+
 function createDate() {
 	let	title = $("#title");
-	let	datestart = $("#startdate");
-	let	datestop = $("#enddate");
+	let	datestart = $("#datestart");
+	let	datestop = $("#datestop");
 	let	description = $("#description");
 	let	category = $("#category");
 
