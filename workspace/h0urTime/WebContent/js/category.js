@@ -93,9 +93,9 @@ function categoriesReady(fetchedJSON) {
 		editCol.append(editButton);
 		rmButton.append(rmIcon);
 		rmCol.append(rmButton);
-		categoryRow.(categoryCol);
-		categoryRow.(editCol);
-		categoryRow.(rmCol);
+		categoryRow.append(categoryCol);
+		categoryRow.append(editCol);
+		categoryRow.append(rmCol);
 
 	/* 
 	<div class="row">
