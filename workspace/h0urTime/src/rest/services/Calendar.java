@@ -3,7 +3,10 @@ package rest.services;
 import java.net.URI;
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.ResultSet;
 import java.sql.Statement;
+import java.util.Hashtable;
+import java.util.Vector;
 
 import javax.ws.rs.FormParam;
 import javax.ws.rs.GET;
@@ -12,7 +15,9 @@ import javax.ws.rs.Path;
 import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.Response;
 
-//import org.glassfish.jersey.server.mvc.Viewable;
+import org.glassfish.jersey.server.mvc.Viewable;
+
+import model.Events;
 
 @Path("calendarservice")
 public class Calendar {
@@ -29,13 +34,25 @@ public class Calendar {
 		
 	}
 	
-	/*
 	@GET
 	public Viewable Template() throws Exception {
+		Connection connection = getConnection();
+		Statement sth = connection.createStatement();
+		
+		ResultSet rs = sth.executeQuery("SELECT * FROM Events ORDER BY eventid DESC");
+		Vector<Events> events = new Vector<Events>();
+		while(rs.next()) {
+			Events event = new Events(rs.getInt("eventid"), rs.getInt("userid"), rs.getDate("datestart"), rs.getDate("datestop"), rs.getString("title"), rs.getString("description"), rs.getInt("categoryid"));
+			events.add(event);
+		}
+		
+		Hashtable<String, Object> model = new Hashtable<String, Object>();
+		model.put("events", events);
+		
+		return new Viewable("calendarservice", model);
 		
 	}
-	*/
-	
+		
 	@POST
 	public Response AddEvent(@FormParam("eventid") String eventid) throws Exception {
 		
