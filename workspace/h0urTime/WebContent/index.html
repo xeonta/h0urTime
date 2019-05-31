@@ -46,7 +46,7 @@
 	</nav>
 
 	<div id="content">
-		<div id="demo" data-ride="carousel">
+		<div id="demo" class="carousel slide" data-interval="false" data-ride="carousel" data-pause="hover">
 
 			<!-- Left and right controls -->
 
@@ -350,6 +350,12 @@
 	$(document).ready(function(){
 		// Activate Carousel
 		$("#demo").carousel("pause");
+
+		$('.carousel').each(function(){
+			$(this).carousel({
+				interval: false
+			});
+    	});
 
 		$(".carousel-control-prev").click(function(){
 			$("#demo").carousel("prev");
