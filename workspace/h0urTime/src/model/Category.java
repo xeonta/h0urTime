@@ -1,5 +1,7 @@
 package model;
 
+import java.util.Date;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -16,6 +18,11 @@ public class Category {
 	
 	private String name;
 	private String color;
+	
+	public Category(int categoryid, String name) {
+		this.categoryid = categoryid;
+		this.name = name;
+	}
 	
 	public int getCategoryid() {
 		return categoryid;
