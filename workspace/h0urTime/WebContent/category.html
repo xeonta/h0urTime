@@ -25,15 +25,14 @@
 			</div>
 			<!-- Modal body -->
 			<div class="modal-body">
-				<form onsubmit="return createCategory()">
-					<div class="row">
-						<div class="col-sm-2"><label>Name: </label></div>
-						<div class="col-sm-9"><input class="form-control" type="text" name="name"></div>
-					</div>	
-				</form>
+				<div class="row">
+					<div class="col-sm-2"><label for="name">Name: </label></div>
+					<div class="col-sm-9"><input class="form-control" type="text" id="name" name="name"></div>
+				</div>	
 			</div>
 			<!-- Modal footer -->
 			<div class="modal-footer">
+				<a href="#" id="save-button" class="btn btn-primary">Save</a>
 				<button type="submit" class="btn btn-success" value="Submit" data-dismiss="modal">Save</button>
 			</div>
 		</div>

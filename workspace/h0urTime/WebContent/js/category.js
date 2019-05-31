@@ -3,9 +3,14 @@ $(onDocumentReady);
 function onDocumentReady() {
 	loadCategories();
 	connectReloadButton();
+	connectSaveButton();
 }
 
-function createCategory() {
+function connectSaveButton() { 
+	$("#save-button").click(createCategory);
+}
+
+function createCategory(e) {
 	let nameInput = $("#name");
 
 	let postData = {
@@ -41,7 +46,7 @@ function loadCategories() {
 	let getCategories = $.getJSON("categoryservice/category.json");
 
 	getCategories.done(categoriesReady);
-	getCategories.fail(categoriesFailed);
+	/* getCategories.fail(categoriesFailed); */
 
 	console.log("Categories finished loading");
 }
@@ -93,10 +98,10 @@ function categoriesReady(fetchedJSON) {
 		editCol.append(editButton);
 		rmButton.append(rmIcon);
 		rmCol.append(rmButton);
-		categoryRow.(categoryCol);
-		categoryRow.(editCol);
-		categoryRow.(rmCol);
-
+		categoryRow.append(categoryCol);
+		categoryRow.append(editCol);
+		categoryRow.append(rmCol);
+	});
 	/* 
 	<div class="row">
 		<div class="col-sm-2">
@@ -117,4 +122,10 @@ function categoriesReady(fetchedJSON) {
 	</div>
 	<hr>
 	*/
+}
+
+function connectReloadButton() { 
+	var button = $("#reload-button");
+
+	button.click(loadCategories);
 }
