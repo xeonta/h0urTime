@@ -121,3 +121,7 @@ h1.title {
     text-overflow: ellipsis;
     margin-bottom: 3px;
 }
+
+.carousel-inner h1{
+    display: inline;
+}
