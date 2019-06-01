@@ -1,31 +1,31 @@
-$(onDocumentReady);
-
-function onDocumentReady() {
+$(document).ready(function() {
 	loadCategories();
 	connectReloadButton();
 	connectSaveButton();
-}
+});
 
 function connectSaveButton() { 
-	$("#save-button").click(createCategory);
+	$("#savebutton").click(createCategory);
 }
 
-function createCategory(e) {
+function createCategory() {
 	let nameInput = $("#name");
 
 	let postData = {
 		name: nameInput.val(),
+		color: "blue",
 	};
 
 	let postDataJsonString = JSON.stringify(postData);
 
-	let createCategoryPromise = $.ajax("categorieservice",
-	{
+	let createCategoryPromise = $.ajax({
+		url: "rest/categoryservice",
+		method: "POST",
 		data: postDataJsonString,
-		type: "POST",
-		contentType: "application/json",
+		dataType: "json",
+		contentType: 'application/json',
 	});
-	
+
 	createCategoryPromise.done(onCreateCategorySucc);
 
 	createCategoryPromise.fail(onCreateCategoryFail);
@@ -33,11 +33,12 @@ function createCategory(e) {
 
 function onCreateCategorySucc() {
 	$("#name").val("");
-	loadCategories();
+	alert("Du bist doch nicht so dumm.");
+	//loadCategories();
 }
 
 function onCreateCategoryFail() {
-	alert("Du bist hässlicher als du denkst!");
+	alert("Du bist dumm!");
 }
 
 function loadCategories() { 
