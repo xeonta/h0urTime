@@ -1,4 +1,4 @@
-<div id="demo" data-ride="carousel">
+<div id="demo" class="carousel slide" data-interval="false" data-ride="carousel" data-pause="hover">
 
 	<!-- Left and right controls -->
 
@@ -12,13 +12,14 @@
 	<!-- The slideshow -->
 	<div class="carousel-inner">
 		<div class="carousel-item active">
-			<h1 class="title text-center">Januar 2014</h1>
+			<span><h1 id="carouselMonth" class="title text-center"></h1><h1> </h1>
+			<h1 id="carouselYear" class="title text-center"></h1></span>
 		</div>
 		<div class="carousel-item">
 			<h1 class="title text-center">Februar 2014</h1>
 		</div>
 		<div class="carousel-item">
-			<h1 class="title text-center">März 2014</h1>
+			<h1 class="title text-center">Mï¿½rz 2014</h1>
 		</div>
 		<div class="carousel-item">
 			<h1 class="title text-center">April 2014</h1>
@@ -340,7 +341,28 @@
 </div>
 
 <script>
-	$(document).ready(function() {
+	$(document).ready(function(){
+		// Activate Carousel
 		$("#demo").carousel("pause");
+
+		$('.carousel').each(function(){
+			$(this).carousel({
+				interval: false
+			});
+		});
+
+		$(".carousel-control-prev").click(function(){
+			$("#demo").carousel("prev");
+		});
+		$(".carousel-control-next").click(function(){
+			$("#demo").carousel("next");
+			});
+
+		let currentDate = new Date();
+		let months = ['Januar', 'Februar', 'MÃ¤rz', 'April', 'Mai', 'Juni', 'Juli', 'August', 'September', 'Oktober', 'November', 'Dezember'];
+
+
+		document.getElementById('carouselMonth').innerHTML = months[currentDate.getMonth()];
+		document.getElementById('carouselYear').innerHTML = currentDate.getFullYear();
 	});
 </script>
