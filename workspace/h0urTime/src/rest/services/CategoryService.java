@@ -14,7 +14,7 @@ import exceptions.DbException;
 import exceptions.ServiceException;
 import model.Category;
 import model.DbConnection;
-import model.dao.CategoryDao;
+import dao.CategoryDao;
 
 @Path("/categoryservice")
 public class CategoryService {
