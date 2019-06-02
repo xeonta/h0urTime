@@ -1,15 +1,15 @@
 $(document).ready(function() {
 	loadCategories();
-	connectReloadButton();
-	connectSaveButton();
+	connectButtons();
 });
 
-function connectSaveButton() { 
+function connectButtons() { 
 	$("#savebutton").click(createCategory);
 }
 
 function createCategory() {
 	let nameInput = $("#name");
+	//let colorInput = $("#color");
 
 	let postData = {
 		name: nameInput.val(),
@@ -18,38 +18,92 @@ function createCategory() {
 
 	let postDataJsonString = JSON.stringify(postData);
 
-	let createCategoryPromise = $.ajax({
-		url: "rest/categoryservice",
+	$.ajax({
+		url: "rest/categoryservice/create",
 		method: "POST",
 		data: postDataJsonString,
 		dataType: "json",
-		contentType: 'application/json',
+		contentType: "application/json",
+	})
+	.done(function() { 
+		loadCategories();
+	})
+	.fail(function() { 
+		console.log("Edit error.");
 	});
-
-	createCategoryPromise.done(onCreateCategorySucc);
-
-	createCategoryPromise.fail(onCreateCategoryFail);
-}
-
-function onCreateCategorySucc() {
-	$("#name").val("");
-	alert("Du bist doch nicht so dumm.");
-	//loadCategories();
-}
-
-function onCreateCategoryFail() {
-	alert("Du bist dumm!");
 }
 
 function loadCategories() { 
 	console.log("Categories loading");
 	
-	let getCategories = $.getJSON("categoryservice/category.json");
-
-	getCategories.done(categoriesReady);
-	/* getCategories.fail(categoriesFailed); */
+	$.ajax({
+		url: "rest/categoryservice/loadAll",
+		method: "GET",
+		datatype: "json",
+		contentType: "application/json",
+	})
+	.done(function(response) { 
+		console.log(response);
+		categoriesReady(response);
+	})
+	.fail(function(jqXHR, statusText, error) { 
+		var errorMsg = "Response Code: " + jqXHR.status + " - Fehlermeldung: " + jqXHR.responseText;
+		console.log(errorMsg);
+	});
 
 	console.log("Categories finished loading");
+}
+
+function deleteCategory(id) { 
+
+	/*let postData = {
+		categoryid: id,
+	};*/
+
+	let deleteDataJsonString = JSON.stringify(id);
+
+	$.ajax({
+		url: "rest/categoryservice/delete",
+		method: "POST",
+		data: deleteDataJsonString,
+		datatype: "json",
+	})
+	.done(function() { 
+		console.log("Delete successful.");
+		loadCategories();
+	})
+	.fail(function() { 
+		console.log("Delete error.");
+	});
+}
+
+function editCategory(id) { 
+	
+	let nameInput = $("#editname");
+	//let colorInput = $("#color");
+
+	let postData = {
+		categoryid: id,
+		name: nameInput.val(),
+		color: "blue",
+	};
+
+	let editDataJsonString = JSON.stringify(postData);
+
+	$.ajax({
+		url: "rest/categoryservice/update",
+		method: "POST",
+		data: editDataJsonString,
+		datatype: "json",
+		contentType: "application/json",
+	})
+	.done(function() { 
+		loadCategories();
+	})
+	.fail(function() { 
+		console.log("Edit error.");
+	});
+
 }
 
 function categoriesFailed() { 
@@ -61,72 +115,67 @@ function categoriesReady(fetchedJSON) {
 	let categoryContainer = $("#category-container");
 	categoryContainer.empty();
 
-	fetchedJSON.forEach((entry) => {
-		let categoryRow = $("<div/>");
+	fetchedJSON.forEach((category) => {
+		let categoryRow = $("<div/>");responseBuilde
 		categoryRow.addClass("row");
 
 		let categoryCol = $("<div/>");
 		categoryCol.addClass("col-sm-2");
 
-		let categoryCheck = $("<input/>");
-		categoryCheck.addType("checkbox");
+		let categoryCheck = $('<input type="checkbox"/>');
 
 		let categoryName = $("<div/>");
 		categoryName.addClass("col-sm-8");
-		categoryName.append("Name");
+		categoryName.append(category.name);
 
 		let editCol = $("<div/>");
 		editCol.addClass("col-sm-1");
-		let editButton = $("<button/>");
-		editButton.addType("button");
+		let editButton = $('<button type="button" id="editbutton" data-toggle="modal" data-target="#editModal"/>');
 		editButton.addClass("btn btn-primary btn-sm");
 		let editIcon = $("<i/>");
 		editIcon.addClass("fas fa-edit");
 
-		let rmCol = $("<div/>");
-		rmCol.addClass("col-sm-1");
+		let delCol = $("<div/>");
+		delCol.addClass("col-sm-1");
 
-		let rmButton = $("<button/>");
-		rmButton.addType("button");
-		rmButton.addClass("btn btn-primary btn-sm");
-		let rmIcon = $("<i/>");
-		rmIcon.addClass("fas fa-trash-alt");
+		let delButton = $('<button type="button" id="deletebutton" onclick="deleteCategory(\'' + category.categoryid + '\')"/>');
+		delButton.addClass("btn btn-primary btn-sm");
+		let delIcon = $("<i/>");
+		delIcon.addClass("fas fa-trash-alt");
 
 		let hr = $("<hr>");
 
 		categoryCol.append(categoryCheck);
 		editButton.append(editIcon);
 		editCol.append(editButton);
-		rmButton.append(rmIcon);
-		rmCol.append(rmButton);
+		delButton.append(delIcon);
+		delCol.append(delButton);
+
 		categoryRow.append(categoryCol);
+		categoryRow.append(categoryName);
 		categoryRow.append(editCol);
-		categoryRow.append(rmCol);
+		categoryRow.append(delCol);
+
+		categoryContainer.append(categoryRow);
+		categoryContainer.append(hr);
 	});
 	/* 
 	<div class="row">
 		<div class="col-sm-2">
-			<input type="checkbox"
-				>
+			<input type="checkbox">
 		</div>
-		<div class="col-sm-8">Home</div>
+		<div class="col-sm-8">Category</div>
 		<div class="col-sm-1">
-			<button type="button" class="btn btn-primary btn-sm">
+			<button type="button" id="editbutton" class="btn btn-primary btn-sm">
 				<i class="fas fa-edit"></i>
 			</button>
 		</div>
 		<div class="col-sm-1">
-			<button type="button" class="btn btn-primary btn-sm">
+			<button type="button" id="deletebutton" class="btn btn-primary btn-sm">
 				<i class="fas fa-trash-alt"></i>
 			</button>
 		</div>
 	</div>
 	<hr>
 	*/
-}
-
-function connectReloadButton() { 
-	var button = $("#reload-button");
-
-	button.click(loadCategories);
 }
