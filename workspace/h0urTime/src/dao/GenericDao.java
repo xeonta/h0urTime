@@ -141,4 +141,5 @@ public abstract class GenericDao<T> {
 			recs = rs.getInt(1);
 		return recs;
 	}
+
 }
