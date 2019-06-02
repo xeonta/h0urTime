@@ -86,10 +86,11 @@ public class CategoryDao extends GenericDao<Category> {
 			throw new DbException("No connection to Database");
 		
 		try {	
-			String sql = "UPDATE" + this.tableName + " SET name=?, color=?";
+			String sql = "UPDATE" + this.tableName + " SET name=?, color=? WHERE categoryid=?";
 			PreparedStatement preparedStatement = this.conn.getConnection().prepareStatement(sql);
 			preparedStatement.setString(1, entity.getName());
 			preparedStatement.setString(2, entity.getColor());
+			preparedStatement.setInt(3, entity.getCategoryid());
 			
 			int affectedRows = preparedStatement.executeUpdate();
 			
@@ -107,7 +108,7 @@ public class CategoryDao extends GenericDao<Category> {
 		if (!this.hasConnection())
 			throw new DbException("No connection to Database");
 		
-		try {	
+		try {
 			String sql = "DELETE FROM " + this.tableName + " WHERE categoryid=?";
 			PreparedStatement preparedStatement = this.conn.getConnection().prepareStatement(sql);
 			preparedStatement.setInt(1, id);
@@ -116,5 +117,11 @@ public class CategoryDao extends GenericDao<Category> {
 			e.printStackTrace();
 			throw new DbException("Could not select records", e);
 		}
+	}
+
+	@Override
+	public List<Category> loadAllByUserId(int userid) throws DbException {
+		// TODO Auto-generated method stub
+		return null;
 	}
 }

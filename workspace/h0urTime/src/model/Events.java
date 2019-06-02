@@ -11,13 +11,11 @@ import javax.persistence.Table;
 @Table(name = "events")
 public class Events {
 
-	/*
-	 * @Id
-	 * 
-	 * @GeneratedValue(strategy = GenerationType.AUTO)
-	 */
-
+	
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int eventid;
+	
 	private int userid;
 	private Date datestart;
 	private Date datestop;
@@ -25,19 +23,15 @@ public class Events {
 	private String description;
 	private int categoryid;
 
-	public Events(int eventid, int userid, Date datestart, Date datestop, String title, String description,
-			int categoryid) {
-		this.eventid = eventid;
-		this.userid = userid;
-		this.datestart = datestart;
-		this.datestop = datestop;
-		this.title = title;
-		this.description = description;
-		this.categoryid = categoryid;
+	public Events() {
 	}
 
 	public int getEventid() {
 		return userid;
+	}
+	
+	public void setEventid(int eventid) {
+		this.eventid = eventid;
 	}
 
 	public int getUserid() {
