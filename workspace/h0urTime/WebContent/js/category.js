@@ -113,7 +113,8 @@ function editButton(id) {
 	$("#editbutton").click(editCategory);  
 }
 
-/*
+/* This chunk of code may be needed later on, it is neither beautiful nor clean
+
 function editModalsReady(responseJSON) {
 	let editContainer = $("edit-container");
 	editContainer.empty();
