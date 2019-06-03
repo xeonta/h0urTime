@@ -1,4 +1,5 @@
 $(document).ready(function() {
+	var categories = null;
 	loadCategories();
 	connectButtons();
 });
@@ -45,6 +46,7 @@ function loadCategories() {
 	.done(function(response) { 
 		console.log(response);
 		categoriesReady(response);
+		editModalsReady(response);
 	})
 	.fail(function(jqXHR, statusText, error) { 
 		var errorMsg = "Response Code: " + jqXHR.status + " - Fehlermeldung: " + jqXHR.responseText;
@@ -56,17 +58,18 @@ function loadCategories() {
 
 function deleteCategory(id) { 
 
-	/*let postData = {
+	let postData = {
 		categoryid: id,
-	};*/
+	};
 
-	let deleteDataJsonString = JSON.stringify(id);
+	let deleteDataJsonString = JSON.stringify(postData);
 
 	$.ajax({
 		url: "rest/categoryservice/delete",
 		method: "POST",
 		data: deleteDataJsonString,
 		datatype: "json",
+		contentType: "application/json",
 	})
 	.done(function() { 
 		console.log("Delete successful.");
@@ -103,12 +106,98 @@ function editCategory(id) {
 	.fail(function() { 
 		console.log("Edit error.");
 	});
-
 }
 
-function categoriesFailed() { 
-	console.log("fail");
-	alert("can not load categories");
+function editModalsReady(responseJSON) {
+	let editContainer = $("edit-container");
+	editContainer.empty();
+
+	responseJSON.forEach((category) => {
+		
+		let modal = $('<div id="editModal' + category.categoryid + '"/>');
+		modal.addClass("modal modal-dialog modal-md modal-content");
+
+		let modalHeader = $('<div/>');
+		modalHeader.addClass("modal-header");
+
+		let header = $('<h4/>');
+		header.addClass("modal-title");
+		header.append("Edit category");
+
+		let dismissButton = $('<button type="button" class="close" data-dismiss="modal"/>');
+		dismissButton.append("&times;");
+
+		let form = $("<form/>");
+
+		let modalBody = $("<div/>");
+		modalBody.addClass("modal-body form-group");
+
+		let modalRow = $("<div/>");
+		modalRow.addClass("row");
+		
+		let labelCol = $("<div/>");
+		modalRow.addClass("col-sm-2");
+
+		let label = $('<label for="name"/>');
+		
+		let inputCol = $('<div/>');
+		inputCol.addClass("col-sm-9");
+
+		let input = $('<label for="name" type="text" id="editname" name="editname"/>');
+
+		let modalFooter = $('<div/>');
+		modalFooter.addClass("modal-footer");
+
+		let saveEdit = $('<button type="button" data-dismiss="modal" id="editbutton" onclick="editCategory(\'' + category.categoryid + '\')"/>');
+		saveEdit.addClass("btn btn-success");
+
+		modalHeader.append(header);
+		modalHeader.append(dismissButton);
+
+		label.append("Name: ");
+		labelCol.append(label);
+		inputCol.append(input);
+		modalRow.append(labelCol);
+		modalRow.append(inputCol);
+		modalBody.append(modalRow);
+		form.append(modalBody);
+
+		saveEdit.append("Save");
+		modalFooter.append(saveEdit);
+
+		modal.append(modalHeader);
+		modal.append(form);
+		modal.append(modalFooter);
+
+		editContainer.append(modal);
+
+		/*
+<div class="modal" id="editModal">
+	<div class="modal-dialog modal-md">
+		<div class="modal-content">
+			<!-- Modal Header -->
+			<div class="modal-header">
+				<h4 class="modal-title">Edit category</h4>
+				<button type="button" class="close" data-dismiss="modal">&times;</button>
+			</div>
+			<!-- Modal body -->
+			<form>
+			<div class="modal-body form-group">
+				<div class="row">
+					<div class="col-sm-2"><label for="name">Name: </label></div>
+					<div class="col-sm-9"><input class="form-control" type="text" id="editname" name="editname"></div>
+				</div>	
+			</div>
+			</form>
+			<!-- Modal footer -->
+			<div class="modal-footer">
+				<button type="button" class="btn btn-success" data-dismiss="modal">Save</button>
+			</div>
+		</div>
+	</div>
+</div>
+		*/
+	});
 }
 
 function categoriesReady(fetchedJSON) { 
@@ -116,7 +205,7 @@ function categoriesReady(fetchedJSON) {
 	categoryContainer.empty();
 
 	fetchedJSON.forEach((category) => {
-		let categoryRow = $("<div/>");responseBuilde
+		let categoryRow = $("<div/>");
 		categoryRow.addClass("row");
 
 		let categoryCol = $("<div/>");
@@ -130,7 +219,7 @@ function categoriesReady(fetchedJSON) {
 
 		let editCol = $("<div/>");
 		editCol.addClass("col-sm-1");
-		let editButton = $('<button type="button" id="editbutton" data-toggle="modal" data-target="#editModal"/>');
+		let editButton = $('<button type="button" id="editbutton" data-toggle="modal" data-target="#editModal' + category.categoryid + '"/>');
 		editButton.addClass("btn btn-primary btn-sm");
 		let editIcon = $("<i/>");
 		editIcon.addClass("fas fa-edit");
@@ -159,6 +248,7 @@ function categoriesReady(fetchedJSON) {
 		categoryContainer.append(categoryRow);
 		categoryContainer.append(hr);
 	});
+
 	/* 
 	<div class="row">
 		<div class="col-sm-2">

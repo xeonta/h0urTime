@@ -64,6 +64,8 @@ public abstract class GenericDao<T> {
 	 */
 	public abstract List<T> loadAll() throws DbException;
 	
+	public abstract List<T> loadAllByUserId(int userid) throws DbException;
+	
 	/**
 	 * Inserts the given entity to the database as new record
 	 * 
