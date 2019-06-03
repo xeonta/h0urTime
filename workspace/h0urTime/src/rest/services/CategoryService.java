@@ -8,6 +8,7 @@ import javax.ws.rs.FormParam;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
+import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
@@ -23,10 +24,9 @@ import dao.CategoryDao;
 @Path("/categoryservice")
 public class CategoryService {
 
-	
 	@GET
 	@Path("/loadAll")
-	@Produces(MediaType.APPLICATION_JSON + "; charset=utf-8")
+	@Produces(MediaType.APPLICATION_JSON)
 	public Response getAll() { 
 		
 		ResponseBuilder responseBuilder = null;
@@ -74,18 +74,19 @@ public class CategoryService {
 	
 	@POST
 	@Path("/delete")
-	@Consumes(MediaType.APPLICATION_FORM_URLENCODED)
+	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(MediaType.APPLICATION_JSON)
-	public Response deleteCategory(@FormParam("categoryid") int id) throws Exception {
+	public Response deleteCategory(Category category) throws Exception {
 		
 		ResponseBuilder responseBuilder = null;
 		DbConnection conn = null;
 		
 		try {
+			// Response is needed to avoid "XML Parsing Error: no root element found"
+			String jsonString = "{ \"deleted\": \"" + category.getCategoryid() + "\"}";
 			conn = DbConnection.getInstance();
 			CategoryDao dao = new CategoryDao(conn);
-			dao.delete(id);
-			String jsonString = "{ \"WTF\": \"" + "WHY" + "\"}";
+			dao.delete(category.getCategoryid());
 			responseBuilder = Response.status(Status.OK).entity(jsonString);
 		} catch (DbException | SQLException e) {
 			e.printStackTrace();
