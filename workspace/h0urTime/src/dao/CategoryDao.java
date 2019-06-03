@@ -86,7 +86,7 @@ public class CategoryDao extends GenericDao<Category> {
 			throw new DbException("No connection to Database");
 		
 		try {	
-			String sql = "UPDATE" + this.tableName + " SET name=?, color=?";
+			String sql = "UPDATE " + this.tableName + " SET name=?, color=?";
 			PreparedStatement preparedStatement = this.conn.getConnection().prepareStatement(sql);
 			preparedStatement.setString(1, entity.getName());
 			preparedStatement.setString(2, entity.getColor());

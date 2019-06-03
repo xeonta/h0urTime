@@ -82,11 +82,12 @@ public class CategoryService {
 		DbConnection conn = null;
 		
 		try {
-			// Response is needed to avoid "XML Parsing Error: no root element found"
-			String jsonString = "{ \"deleted\": \"" + category.getCategoryid() + "\"}";
 			conn = DbConnection.getInstance();
 			CategoryDao dao = new CategoryDao(conn);
 			dao.delete(category.getCategoryid());
+			
+			// Response is needed to avoid "XML Parsing Error: no root element found"
+			String jsonString = "{ \"deleted\": \"" + category.getCategoryid() + "\"}";
 			responseBuilder = Response.status(Status.OK).entity(jsonString);
 		} catch (DbException | SQLException e) {
 			e.printStackTrace();
