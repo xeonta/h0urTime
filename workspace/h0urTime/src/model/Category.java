@@ -32,8 +32,8 @@ public class Category {
 		this.color = color;
 	} 
 	
-	public void setCategoryid(int categoryid) {
-		this.categoryid = categoryid;
+	public void setCategoryid(int l) {
+		this.categoryid = l;
 	}
 	
 	public int getCategoryid() {
