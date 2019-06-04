@@ -13,27 +13,27 @@ import javax.ws.rs.core.Response;
 import javax.ws.rs.core.Response.ResponseBuilder;
 import javax.ws.rs.core.Response.Status;
 
+import dao.EventsDao;
 import exceptions.DbException;
 import exceptions.ServiceException;
-import model.Category;
 import model.DbConnection;
-import dao.CategoryDao;
+import model.Events;
 
-@Path("/categoryservice")
-public class CategoryService {
+@Path("/eventservice")
+public class EventService {
 
 	@GET
-	@Path("/loadAll")
+	@Path("/loadAllByUserId")
 	@Produces(MediaType.APPLICATION_JSON)
-	public Response getAll() { 
+	public Response getAllByUserId(int userid) { 
 		
 		ResponseBuilder responseBuilder = null;
 		DbConnection conn = null;
 		
 		try {
 			conn = DbConnection.getInstance();
-			CategoryDao dao = new CategoryDao(conn);
-			List<Category> list = dao.loadAll();
+			EventsDao dao = new EventsDao(conn);
+			List<Events> list = dao.loadAllByUserId(userid);
 			responseBuilder = Response.status(Status.OK).entity(list);
 		} catch (DbException | SQLException e) {
 			e.printStackTrace();
@@ -49,14 +49,14 @@ public class CategoryService {
 	@Path("/create")
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(MediaType.APPLICATION_JSON)
-	public Response createCategory(Category entity) throws Exception {
+	public Response createEvent(Events entity) throws Exception {
 		
 		ResponseBuilder responseBuilder = null;
 		DbConnection conn = null;
 		
 		try {
 			conn = DbConnection.getInstance();
-			CategoryDao dao = new CategoryDao(conn);
+			EventsDao dao = new EventsDao(conn);
 			entity = dao.insert(entity);
 			responseBuilder = Response.status(Status.OK).entity(entity);
 		} catch (DbException | SQLException e) {
@@ -74,18 +74,18 @@ public class CategoryService {
 	@Path("/delete")
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(MediaType.APPLICATION_JSON)
-	public Response deleteCategory(Category category) throws Exception {
+	public Response deleteEvent(Events entity) throws Exception {
 		
 		ResponseBuilder responseBuilder = null;
 		DbConnection conn = null;
 		
 		try {
 			conn = DbConnection.getInstance();
-			CategoryDao dao = new CategoryDao(conn);
-			dao.delete(category.getCategoryid());
+			EventsDao dao = new EventsDao(conn);
+			dao.delete(entity.getEventid());
 			
 			// Response is needed to avoid "XML Parsing Error: no root element found"
-			String jsonString = "{ \"deleted\": \"" + category.getCategoryid() + "\"}";
+			String jsonString = "{ \"deleted\": \"" + entity.getEventid() + "\"}";
 			responseBuilder = Response.status(Status.OK).entity(jsonString);
 		} catch (DbException | SQLException e) {
 			e.printStackTrace();
@@ -102,14 +102,14 @@ public class CategoryService {
 	@Path("/update")
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(MediaType.APPLICATION_JSON)
-	public Response updateCategory(Category entity) throws Exception {
+	public Response updateEvent(Events entity) throws Exception {
 		
 		ResponseBuilder responseBuilder = null;
 		DbConnection conn = null;
 		
 		try {
 			conn = DbConnection.getInstance();
-			CategoryDao dao = new CategoryDao(conn);
+			EventsDao dao = new EventsDao(conn);
 			entity = dao.update(entity);
 			responseBuilder = Response.status(Status.OK).entity(entity);
 		} catch (DbException | SQLException e) {
