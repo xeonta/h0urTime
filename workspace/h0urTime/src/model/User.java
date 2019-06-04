@@ -15,8 +15,16 @@ public class User {
 	private int userid;
 	private String name;
 	
+	public User() {
+		
+	}
+	
 	public int getUserid() {
 		return userid;
+	}
+	
+	public void setUserid(int userid) {
+		this.userid = userid;
 	}
 	
 	public String getName() {
