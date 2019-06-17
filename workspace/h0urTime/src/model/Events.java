@@ -11,14 +11,12 @@ import javax.persistence.Table;
 @Table(name = "events")
 public class Events {
 
-	
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int eventid;
 	
 	private int userid;
-	private Date datestart;
-	private Date datestop;
+	private Date date;
 	private String title;
 	private String description;
 	private int categoryid;
@@ -40,22 +38,6 @@ public class Events {
 
 	public void setUserid(int userid) {
 		this.userid = userid;
-	}
-
-	public Date getDatestart() {
-		return datestart;
-	}
-
-	public void setDatestart(Date datestart) {
-		this.datestart = datestart;
-	}
-
-	public Date getDatestop() {
-		return datestop;
-	}
-
-	public void setDatestop(Date datestop) {
-		this.datestop = datestop;
 	}
 
 	public String getTitle() {
@@ -80,6 +62,14 @@ public class Events {
 
 	public void setCategoryid(int categoryid) {
 		this.categoryid = categoryid;
+	}
+
+	public Date getDate() {
+		return date;
+	}
+
+	public void setDate(Date date) {
+		this.date = date;
 	}
 
 }
