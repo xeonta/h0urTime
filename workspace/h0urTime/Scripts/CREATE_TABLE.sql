@@ -12,8 +12,7 @@ CREATE TABLE 'category' (
 CREATE TABLE 'events' (
     'eventid' INTEGER NOT NULL PRIMARY KEY,
     'userid' INTEGER NOT NULL,
-    'datestart' DATETIME NOT NULL,
-    'datestop' DATETIME NOT NULL,
+    'date' TEXT NOT NULL,
     'title' TEXT NOT NULL,
     'description' BLOB,
     'categoryid' INTEGER

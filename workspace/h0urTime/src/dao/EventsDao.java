@@ -25,15 +25,13 @@ public class EventsDao extends GenericDao<Events> {
 		try {
 			// NULL is working cause of NOT NULL AUTOINCREMENT combination
 			// at primary key create table statement!!!
-			String sql = "INSERT INTO " + this.tableName + " VALUES (NULL,?,?,?,?,?,?)";
+			String sql = "INSERT INTO " + this.tableName + " VALUES (NULL,?,?,?,?,?)";
 			PreparedStatement preparedStatement = this.conn.getConnection().prepareStatement(sql);
-			preparedStatement.setInt(1, entity.getEventid());
 			preparedStatement.setInt(1, entity.getUserid());
-			preparedStatement.setDate(2, (Date) entity.getDatestart());
-			preparedStatement.setDate(3, (Date) entity.getDatestart());
-			preparedStatement.setString(4, entity.getTitle());
-			preparedStatement.setString(5, entity.getDescription());
-			preparedStatement.setInt(6, entity.getCategoryid());
+			preparedStatement.setDate(2, (Date) entity.getDate());
+			preparedStatement.setString(3, entity.getTitle());
+			preparedStatement.setString(4, entity.getDescription());
+			preparedStatement.setInt(5, entity.getCategoryid());
 			
 			
 			// get last auto generated id and assign to entity
@@ -67,15 +65,14 @@ public class EventsDao extends GenericDao<Events> {
 			throw new DbException("No connection to Database");
 		
 		try {	
-			String sql = "UPDATE" + this.tableName + " SET userid=?, datestart=?, datestop=?, title=?, description=?, categoryid=? WHERE eventid=?";
+			String sql = "UPDATE" + this.tableName + " SET userid=?, date=?, title=?, description=?, categoryid=? WHERE eventid=?";
 			PreparedStatement preparedStatement = this.conn.getConnection().prepareStatement(sql);
 			preparedStatement.setInt(1, entity.getUserid());
-			preparedStatement.setDate(2, (Date) entity.getDatestart());
-			preparedStatement.setDate(3, (Date) entity.getDatestop());
-			preparedStatement.setString(4, entity.getTitle());
-			preparedStatement.setString(5, entity.getDescription());
-			preparedStatement.setInt(6, entity.getCategoryid());
-			preparedStatement.setInt(7, entity.getEventid());
+			preparedStatement.setDate(2, (Date) entity.getDate());
+			preparedStatement.setString(3, entity.getTitle());
+			preparedStatement.setString(4, entity.getDescription());
+			preparedStatement.setInt(5, entity.getCategoryid());
+			preparedStatement.setInt(6, entity.getEventid());
 						
 			int affectedRows = preparedStatement.executeUpdate();
 			
@@ -120,11 +117,12 @@ public class EventsDao extends GenericDao<Events> {
 				Events entity = new Events();
 				entity.setEventid(rs.getInt(1));
 				entity.setUserid(rs.getInt(2));
-				entity.setDatestart(rs.getDate(3));
-				entity.setDatestop(rs.getDate(4));
-				entity.setTitle(rs.getString(5));
-				entity.setDescription(rs.getString(6));
-				entity.setCategoryid(rs.getInt(7));
+				entity.setDate(rs.getDate(3));
+				
+				
+				entity.setTitle(rs.getString(4));
+				entity.setDescription(rs.getString(5));
+				entity.setCategoryid(rs.getInt(6));
 				list.add(entity);
 			}
 		} catch (SQLException e) {
@@ -134,9 +132,4 @@ public class EventsDao extends GenericDao<Events> {
 		return list;
 	}
 
-	@Override
-	public List<Events> loadAllByUserId(int userid) throws DbException {
-		// TODO Auto-generated method stub
-		return null;
-	}
 }

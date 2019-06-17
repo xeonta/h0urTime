@@ -65,12 +65,6 @@ public class UserDao extends GenericDao<User> {
 	}
 
 	@Override
-	public List<User> loadAllByUserId(int userid) throws DbException {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
 	public User insert(User entity) throws DbException {
 		if (!this.hasConnection()) 
 			throw new DbException("No connection to Database");

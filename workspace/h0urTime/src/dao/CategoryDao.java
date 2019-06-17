@@ -118,10 +118,4 @@ public class CategoryDao extends GenericDao<Category> {
 			throw new DbException("Could not select records", e);
 		}
 	}
-
-	@Override
-	public List<Category> loadAllByUserId(int userid) throws DbException {
-		// TODO Auto-generated method stub
-		return null;
-	}
 }
