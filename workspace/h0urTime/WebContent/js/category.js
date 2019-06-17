@@ -39,7 +39,7 @@ function createCategory() {
 
 function loadCategories() { 
 	console.log("Categories loading");
-	
+
 	$.ajax({
 		url: "rest/categoryservice/loadAll",
 		method: "GET",
@@ -49,6 +49,7 @@ function loadCategories() {
 	.done(function(response) { 
 		console.log(response);
 		categoriesReady(response);
+	        categoryOptionsReady(response);
 	})
 	.fail(function(jqXHR, statusText, error) { 
 		var errorMsg = "Response Code: " + jqXHR.status + " - Fehlermeldung: " + jqXHR.responseText;
@@ -113,6 +114,16 @@ function editCategory() {
 
 function passIdToModal(id) {
 	modalEditId = id;
+}
+
+function categoryOptionsReady(fetchedJSON) {
+    let categoryOptions = $("#category-options");
+    categoryOptions.empty();
+
+    fetchedJSON.forEach((category) => {
+	let option = $('<option id="' + category.categoryid + '">' + category.name + '</option>');
+	categoryOptions.append(option);
+    });
 }
 
 function categoriesReady(fetchedJSON) { 

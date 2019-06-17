@@ -16,11 +16,11 @@ function connectReloadButton() {
 }
 
 function createDate() {
-	let	title = $("#title");
-	let	datestart = $("#datestart");
-	let	datestop = $("#datestop");
-	let	description = $("#description");
-	let	category = $("#category");
+	let     title = $("#title");
+	let     datestart = $("#datestart");
+	let     datestop = $("#datestop");
+	let     description = $("#description");
+	let     category = $("#category");
 
 	// Create JSON
 	let postData = {
@@ -93,7 +93,7 @@ function loadEvents() {
 	});
 }
 
-function deleteCategory(id) { 
+function deleteEvent(id) { 
 
 	let postData = {
 		event: id,
