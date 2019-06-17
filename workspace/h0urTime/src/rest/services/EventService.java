@@ -23,9 +23,9 @@ import model.Events;
 public class EventService {
 
 	@GET
-	@Path("/loadAllByUserId")
+	@Path("/loadAll")
 	@Produces(MediaType.APPLICATION_JSON)
-	public Response getAllByUserId(int userid) { 
+	public Response getAll() { 
 		
 		ResponseBuilder responseBuilder = null;
 		DbConnection conn = null;
@@ -33,7 +33,7 @@ public class EventService {
 		try {
 			conn = DbConnection.getInstance();
 			EventsDao dao = new EventsDao(conn);
-			List<Events> list = dao.loadAllByUserId(userid);
+			List<Events> list = dao.loadAll();
 			responseBuilder = Response.status(Status.OK).entity(list);
 		} catch (DbException | SQLException e) {
 			e.printStackTrace();

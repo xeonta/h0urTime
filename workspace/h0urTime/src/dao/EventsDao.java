@@ -59,37 +59,6 @@ public class EventsDao extends GenericDao<Events> {
 	}
 
 	@Override
-	public List<Events> loadAllByUserId(int userid) throws DbException {
-		if (!this.hasConnection()) 
-			throw new DbException("No connection to Database");
-		
-		List<Events> list = new ArrayList<Events>();
-		
-		try {	
-			String sql = "SELECT * FROM " + this.tableName + "WHERE userid=?";
-			PreparedStatement preparedStatement = this.conn.getConnection().prepareStatement(sql);
-			preparedStatement.setInt(1, userid);
-			ResultSet rs = preparedStatement.executeQuery();
-			
-			while (rs.next() != false) {
-				Events entity = new Events();
-				entity.setEventid(rs.getInt(1));
-				entity.setUserid(rs.getInt(2));
-				entity.setDatestart(rs.getDate(3));
-				entity.setDatestop(rs.getDate(4));
-				entity.setTitle(rs.getString(5));
-				entity.setDescription(rs.getString(6));
-				entity.setCategoryid(rs.getInt(7));
-				list.add(entity);
-			}
-		} catch (SQLException e) {
-			e.printStackTrace();
-			throw new DbException("Could not select records", e);
-		}
-		return list;
-	}
-
-	@Override
 	public Events update(Events entity) throws DbException {
 		if (entity == null || entity.getEventid() < 1) 
 			throw new DbException("No connection to Database");
@@ -163,5 +132,11 @@ public class EventsDao extends GenericDao<Events> {
 			throw new DbException("Could not select records", e);
 		}
 		return list;
+	}
+
+	@Override
+	public List<Events> loadAllByUserId(int userid) throws DbException {
+		// TODO Auto-generated method stub
+		return null;
 	}
 }
