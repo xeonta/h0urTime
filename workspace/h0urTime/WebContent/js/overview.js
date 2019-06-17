@@ -1,5 +1,4 @@
 $(document).ready(function() {
-	var events = null;
 	loadEvents();
 });
 
@@ -24,6 +23,8 @@ function loadEvents() {
 	console.log("Events finished loading");
 }
 
+// Das ist noch nicht schön.
+// TODO: Sort by date
 function overviewReady(fetchedJSON) { 
 	let overviewContainer = $("#overview-container");
 	overviewContainer.empty();
@@ -39,12 +40,18 @@ function overviewReady(fetchedJSON) {
 		eventTitle.addClass("col-sm-2");
 		eventTitle.append(event.title);
 
+		let eventDate = $("<div/>");
+		eventDate.addClass("col-sm-8");
+		eventDate.append(event.date);
+		
+		
 		let hr = $("<hr>");
 
 		eventRow.append(eventCol);
 		eventRow.append(eventTitle);
+		eventRow.append(eventDate);
 
-		overviewContainer.append(categoryRow);
+		overviewContainer.append(eventRow);
 		overviewContainer.append(hr);
 	});
 
