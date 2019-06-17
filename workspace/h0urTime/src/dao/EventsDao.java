@@ -134,9 +134,4 @@ public class EventsDao extends GenericDao<Events> {
 		return list;
 	}
 
-	@Override
-	public List<Events> loadAllByUserId(int userid) throws DbException {
-		// TODO Auto-generated method stub
-		return null;
-	}
 }
