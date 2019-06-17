@@ -164,6 +164,12 @@ function categoriesReady(fetchedJSON) {
 		categoryContainer.append(hr);
 	});
 
+
+function setColor() {
+	console.log("Dada");
+}
+	
+
 	/* 
 	<div class="row">
 		<div class="col-sm-2">
@@ -183,4 +189,5 @@ function categoriesReady(fetchedJSON) {
 	</div>
 	<hr>
 	*/
+
 }
