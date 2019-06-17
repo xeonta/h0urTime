@@ -15,8 +15,7 @@ public class Events {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int eventid;
 	
-	private int userid;
-	private Date date;
+	private String date;
 	private String title;
 	private String description;
 	private int categoryid;
@@ -25,19 +24,11 @@ public class Events {
 	}
 
 	public int getEventid() {
-		return userid;
+		return eventid;
 	}
 	
 	public void setEventid(int eventid) {
 		this.eventid = eventid;
-	}
-
-	public int getUserid() {
-		return eventid;
-	}
-
-	public void setUserid(int userid) {
-		this.userid = userid;
 	}
 
 	public String getTitle() {
@@ -64,11 +55,11 @@ public class Events {
 		this.categoryid = categoryid;
 	}
 
-	public Date getDate() {
+	public String getDate() {
 		return date;
 	}
 
-	public void setDate(Date date) {
+	public void setDate(String date) {
 		this.date = date;
 	}
 
