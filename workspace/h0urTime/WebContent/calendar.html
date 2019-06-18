@@ -36,19 +36,15 @@
 				<form onsubmit="return createDate()">
 				<div class="row">
 					<div class="col-sm-2"><label>Title: </label></div>
-					<div class="col-sm-9"><input class="form-control" type="text" name="title"></div>
+					<div class="col-sm-9"><input id="title" class="form-control" type="text" name="title"></div>
 				</div>
 				<div class="row">
-					<div class="col-sm-2"><label>Start: </label></div>
-					<div class="col-sm-9"><input class="form-control" type="date" name="datestart"></div>
-				</div>
-				<div class="row">
-					<div class="col-sm-2"><label>End: </label></div>
-					<div class="col-sm-9"><input class="form-control" type="date" name="datestop"></div>
+					<div class="col-sm-2"><label>Date: </label></div>
+					<div class="col-sm-9"><input id="date" class="form-control" type="date" name="datestart"></div>
 				</div>
 				<div class="row">
 					<div class="col-sm-2"><label>Description: </label></div>
-					<div class="col-sm-9"><textarea class="form-control" rows="3" name="description"></textarea></div>
+					<div class="col-sm-9"><textarea id="description" class="form-control" rows="3" name="description"></textarea></div>
 				</div>
 				<div class="row">
 					<div class="col-sm-2"><label>Category: </label></div>
@@ -60,7 +56,7 @@
 			</div>
 			<!-- Modal footer -->
 			<div class="modal-footer">
-				<button type="submit" class="btn btn-success" value="Submit" data-dismiss="modal">Save</button>
+				<button id="savebutton" type="submit" class="btn btn-success" value="Submit" onclick="createEvent()" data-dismiss="modal">Save</button>
 			</div>
 		</div>
 	</div>

@@ -1,14 +1,19 @@
 $(onDocumentReady);
 
 function onDocumentReady() {
-	loadDates();
-	connectReloadButton();
-        loadCategories();
+    loadDates();
+    connectReloadButton();
+    loadCategories();
+    connectButtons();
+    $("#category-options").change(function() {
+	categoryid = $(this).children(":selected").attr("id");
+    });
 }
+
+var categoryid;
 
 function loadDates() {
 	let getDatesMonth = $.get("calendarservice/dates");
-
 }
 
 function connectReloadButton() {
@@ -16,65 +21,39 @@ function connectReloadButton() {
 	button.click(loadDates);
 }
 
-function createDate() {
-	let     title = $("#title");
-	let     datestart = $("#datestart");
-	let     datestop = $("#datestop");
-	let     description = $("#description");
-	let     category = $("#category");
-
-	// Create JSON
-	let postData = {
-		title: title.val(),
-		datestart: datestart.val(),
-		datestop: datestop.val(),
-		description: description.val(),
-		category: category.val(),
-	};
-
-	let createDatePromise = $.post("newDate", postData);
-
-	createDatePromise.done(createDateSucceeded);
-
-	createDatePromise.fail(createDateFailed);
-}
-
-function createDateSucceeded() {
-	
-}
-
-function createDateFailed() {
+function connectButtons() {
+    $("#savebutton").click(createEvent);
 
 }
 
 function createEvent() {
-	let titleInput = $("#title");
-	let dateInput = $("#date");
-	let descriptionInput = $("#description");
-	let categoryInput = $("#category");
+    let title = $("#title");
+    let date = $("#date");
+    let description = $("#description");
+    
+    // Create JSON
+    let postData = {
+	title: title.val(),
+	date: date.val(),
+	description: description.val(),
+	categoryid: categoryid,
+    };
 
-	let postData = {
-	    name: titleInput.val(),
-	    color: dateInput.val(),
-	    description: descriptionInput .val(),
-	    color: categoryInput .val(),
-	};
+    let postDataJsonString = JSON.stringify(postData);
 
-	let postDataJsonString = JSON.stringify(postData);
-
-	$.ajax({
-		url: "rest/eventservice/create",
-		method: "POST",
-		data: postDataJsonString,
-		dataType: "json",
-		contentType: "application/json",
-	})
-	.done(function() { 
-		loadEvents();
-	})
-	.fail(function() { 
-		console.log("Error.");
-	});
+    $.ajax({
+	url: "rest/eventservice/create",
+	method: "POST",
+	data: postDataJsonString,
+	dataType: "json",
+	contentType: "application/json",
+    })
+    .done(function() { 
+	alert("hallo");
+    })
+    .fail(function() { 
+	console.log("Edit error.");
+    });
 }
 
 function loadEvents() { 
@@ -142,9 +121,9 @@ function loadCategories() {
 function categoryOptionsReady(fetchedJSON) {
     let categoryOptions = $("#category-options");
     categoryOptions.empty();
-
+    categoryid = fetchedJSON[0].categoryid
     fetchedJSON.forEach((category) => {
-	let option = $('<option id="' + category.categoryid + '">' + category.name + '</option>');
+	let option = $('<option id="'+ categoryid + '">' + category.name + '</option>');
 	categoryOptions.append(option);
     });
 }
