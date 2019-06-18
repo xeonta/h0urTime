@@ -108,8 +108,8 @@ public class EventsDao extends GenericDao<Events> {
 		
 		List<Events> list = new ArrayList<Events>();
 		
-		try {	
-			String sql = "SELECT * FROM " + this.tableName;
+		try {
+			String sql = "SELECT * FROM " + this.tableName + " ORDER BY date(date) ASC";
 			PreparedStatement preparedStatement = this.conn.getConnection().prepareStatement(sql);
 			ResultSet rs = preparedStatement.executeQuery();
 			
