@@ -25,34 +25,39 @@ function loadEvents() {
 
 // Das ist noch nicht schön.
 // TODO: Sort by date
-function overviewReady(fetchedJSON) { 
+function overviewReady(fetchedJSON) {
 	let overviewContainer = $("#overview-container");
 	overviewContainer.empty();
-
+	
 	fetchedJSON.forEach((event) => {
-		let eventRow = $("<div/>");
-		eventRow.addClass("row");
-
-		let eventCol = $("<div/>");
-		eventCol.addClass("col-sm-2");
 		
-		let eventTitle = $("<div/>");
-		eventTitle.addClass("col-sm-2");
-		eventTitle.append(event.title);
+		if(new Date(event.date) > new Date()){
 
-		let eventDate = $("<div/>");
-		eventDate.addClass("col-sm-8");
-		eventDate.append(event.date);
-		
-		
-		let hr = $("<hr>");
+			let eventRow = $("<div/>");
+			eventRow.addClass("row");
 
-		eventRow.append(eventCol);
-		eventRow.append(eventTitle);
-		eventRow.append(eventDate);
+			let eventCol = $("<div/>");
+			eventCol.addClass("col-sm-2");
+			
+			let eventTitle = $("<div/>");
+			eventTitle.addClass("col-sm-2");
+			eventTitle.append(event.title);
 
-		overviewContainer.append(eventRow);
-		overviewContainer.append(hr);
+			let eventDate = $("<div/>");
+			eventDate.addClass("col-sm-8");
+			eventDate.append(event.date);
+			
+			
+			let hr = $("<hr>");
+
+			eventRow.append(eventCol);
+			eventRow.append(eventTitle);
+			eventRow.append(eventDate);
+
+			overviewContainer.append(eventRow);
+			overviewContainer.append(hr);
+        }
+        
 	});
 
 }
