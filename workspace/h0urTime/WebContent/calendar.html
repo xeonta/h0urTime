@@ -36,20 +36,20 @@
 				<form onsubmit="return createDate()">
 				<div class="row">
 					<div class="col-sm-2"><label>Title: </label></div>
-					<div class="col-sm-9"><input id="title" class="form-control" type="text" name="title"></div>
+					<div class="col-sm-9"><input id="title" class="form-control" type="text" name="title" required></div>
 				</div>
 				<div class="row">
 					<div class="col-sm-2"><label>Date: </label></div>
-					<div class="col-sm-9"><input id="date" class="form-control" type="date" name="datestart"></div>
+					<div class="col-sm-9"><input id="date" class="form-control" type="date" name="datestart" required></div>
 				</div>
 				<div class="row">
 					<div class="col-sm-2"><label>Description: </label></div>
-					<div class="col-sm-9"><textarea id="description" class="form-control" rows="3" name="description"></textarea></div>
+					<div class="col-sm-9"><textarea id="description" class="form-control" rows="3" name="description" required></textarea></div>
 				</div>
 				<div class="row">
 					<div class="col-sm-2"><label>Category: </label></div>
 					<div class="col-sm-9">
-					<select id="category-options" class="form-control"></select>
+					<select id="category-options" class="form-control" required></select>
 					</div>
 				</div>
 				</form>
