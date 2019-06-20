@@ -13,17 +13,28 @@ function onDocumentReady() {
 var categoryid;
 
 function loadDates() {
-	let getDatesMonth = $.get("calendarservice/dates");
+    let getDatesMonth = $.get("calendarservice/dates");
 }
 
 function connectReloadButton() {
-	var button = $("#reload-button");
-	button.click(loadDates);
+    var button = $("#reload-button");
+    button.click(loadDates);
 }
 
 function connectButtons() {
-    $("#savebutton").click(createEvent);
+    $("#savebutton").click(valCreateEventInput);
+}
 
+function valCreateEventInput() {
+    let title = $("#title").val();
+    let date = $("#date").val();
+
+    if (title == "" || date == "") {
+	alert("Error. Fields must be filled out.")
+	return false;
+    } else {
+	createEvent();
+    }
 }
 
 function createEvent() {

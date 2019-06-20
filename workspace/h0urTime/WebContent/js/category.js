@@ -7,8 +7,30 @@ $(document).ready(function() {
 var modalEditId;
 
 function connectButtons() { 
-	$("#savebutton").click(createCategory);
-	$("#editbutton").click(editCategory);
+	$("#savebutton").click(valEmptyCreateInput);
+	$("#editbutton").click(valEmptyEditInput);
+}
+
+function valEmptyCreateInput() {
+    let input = $("#name").val();
+    
+    if (input == "") {
+	alert("Error. Fields must be filled out.");
+	return false;
+    } else {
+	createCategory();
+    }
+}
+
+function valEmptyEditInput() {
+    let input = $("#name").val();
+
+    if (input == "") {
+	alert("Error. Fields must be filled out.");
+	return false;
+    } else {
+	editCategory();
+    }
 }
 
 function createCategory() {
