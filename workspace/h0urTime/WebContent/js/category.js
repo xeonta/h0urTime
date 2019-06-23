@@ -11,6 +11,20 @@ function connectButtons() {
 	$("#editbutton").click(editCategory);
 }
 
+
+function connectCheckbox() {
+	// add or remove categories from the selectedCategories array
+	$(":checkbox").click(function(){
+	    if($(this).is(':checked')){
+	        selectedCategories.push($(this).val());
+	    } else {
+	    	selectedCategories.splice(selectedCategories.indexOf($(this).val()), 1);
+	    }
+	    console.log("Selected Categories:");
+        console.log(selectedCategories);
+	});
+}
+
 function createCategory() {
 	let nameInput = $("#name");
 	//let colorInput = $("#color");
@@ -126,7 +140,14 @@ function categoriesReady(fetchedJSON) {
 		let categoryCol = $("<div/>");
 		categoryCol.addClass("col-sm-2");
 
-		let categoryCheck = $('<input type="checkbox"/>');
+		let categoryCheck = $('<input type="checkbox" value=""/>');
+		categoryCheck.val(category.categoryid);
+		if(selectedCategories.includes(categoryCheck.val())) {
+			categoryCheck.prop('checked', true);
+		}
+		else {
+			categoryCheck.prop('checked', false);
+		}
 
 		let categoryName = $("<div/>");
 		categoryName.addClass("col-sm-8");
@@ -164,23 +185,5 @@ function categoriesReady(fetchedJSON) {
 		categoryContainer.append(hr);
 	});
 
-	/* 
-	<div class="row">
-		<div class="col-sm-2">
-			<input type="checkbox">
-		</div>
-		<div class="col-sm-8">Category</div>
-		<div class="col-sm-1">
-			<button type="button" id="editbutton" class="btn btn-primary btn-sm">
-				<i class="fas fa-edit"></i>
-			</button>
-		</div>
-		<div class="col-sm-1">
-			<button type="button" id="deletebutton" class="btn btn-primary btn-sm">
-				<i class="fas fa-trash-alt"></i>
-			</button>
-		</div>
-	</div>
-	<hr>
-	*/
+	connectCheckbox();
 }
