@@ -1,25 +1,15 @@
 $(onDocumentReady);
 
 function onDocumentReady() {
-    loadDates();
-    connectReloadButton();
     loadCategories();
     connectButtons();
+
     $("#category-options").change(function() {
 	categoryid = $(this).children(":selected").attr("id");
     });
 }
 
 var categoryid;
-
-function loadDates() {
-    let getDatesMonth = $.get("calendarservice/dates");
-}
-
-function connectReloadButton() {
-    var button = $("#reload-button");
-    button.click(loadDates);
-}
 
 function connectButtons() {
     $("#savebutton").click(valCreateEventInput);
@@ -38,15 +28,15 @@ function valCreateEventInput() {
 }
 
 function createEvent() {
-    let title = $("#title");
-    let date = $("#date");
-    let description = $("#description");
+    let title = escape($("#title").val());
+    let date = escape($("#date").val());
+    let description = escape($("#description").val());
     
     // Create JSON
     let postData = {
-	title: title.val(),
-	date: date.val(),
-	description: description.val(),
+	title: title,
+	date: date,
+	description: description,
 	categoryid: categoryid,
     };
 
@@ -60,7 +50,7 @@ function createEvent() {
 	contentType: "application/json",
     })
     .done(function() { 
-	alert("hallo");
+
     })
     .fail(function() { 
 	console.log("Edit error.");
@@ -132,7 +122,7 @@ function loadCategories() {
 function categoryOptionsReady(fetchedJSON) {
     let categoryOptions = $("#category-options");
     categoryOptions.empty();
-    categoryid = fetchedJSON[0].categoryid
+
     fetchedJSON.forEach((category) => {
 	let option = $('<option id="'+ categoryid + '">' + category.name + '</option>');
 	categoryOptions.append(option);

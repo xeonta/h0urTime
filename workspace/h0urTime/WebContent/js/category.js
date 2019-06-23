@@ -1,5 +1,4 @@
 $(document).ready(function() {
-	var categories = null;
 	loadCategories();
 	connectButtons();
 });
@@ -34,12 +33,13 @@ function valEmptyEditInput() {
 }
 
 function createCategory() {
-	let nameInput = $("#name");
+
+    let nameInput = escape($("#name").val());
 	//let colorInput = $("#color");
 
 	let postData = {
-		name: nameInput.val(),
-		color: "blue",
+	    name: nameInput,
+	    color: "blue",
 	};
 
 	let postDataJsonString = JSON.stringify(postData);
@@ -106,13 +106,12 @@ function deleteCategory(id) {
 
 function editCategory() { 
 	
-	let nameUpdate = $("#editname");
+    let nameUpdate = escape($("#editname").val());
 	//let colorInput = $("#color");
-
 
 	let postData = {
 		categoryid: modalEditId,
-		name: nameUpdate.val(),
+		name: nameUpdate,
 		color: "blue",
 	};
 
