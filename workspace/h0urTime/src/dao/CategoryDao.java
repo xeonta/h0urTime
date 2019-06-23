@@ -6,6 +6,9 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.jsoup.Jsoup;
+import org.jsoup.safety.Whitelist;
+
 import exceptions.DbException;
 import model.Category;
 import model.DbConnection;
@@ -22,12 +25,17 @@ public class CategoryDao extends GenericDao<Category> {
 			throw new DbException("No connection to Database");
 		
 		try {
+			// Sanitize XSS
+			Whitelist whitelist = new Whitelist();
+			String name = Jsoup.clean(entity.getName(), whitelist);
+			String color = Jsoup.clean(entity.getColor(), whitelist);
+			
 			// NULL is working cause of NOT NULL AUTOINCREMENT combination
 			// at primary key create table statement!!!
 			String sql = "INSERT INTO " + this.tableName + " VALUES (NULL,?,?)";
 			PreparedStatement preparedStatement = this.conn.getConnection().prepareStatement(sql);
-			preparedStatement.setString(1, entity.getName());
-			preparedStatement.setString(2, entity.getColor());
+			preparedStatement.setString(1, name);
+			preparedStatement.setString(2, color);
 			
 			// get last auto generated id and assign to entity
 			entity.setCategoryid(this.getLastAutoincrementId(preparedStatement));
@@ -86,10 +94,15 @@ public class CategoryDao extends GenericDao<Category> {
 			throw new DbException("No connection to Database");
 		
 		try {	
+			// Sanitize
+			Whitelist whitelist = new Whitelist();
+			String name = Jsoup.clean(entity.getName(), whitelist);
+			String color = Jsoup.clean(entity.getColor(), whitelist);
+			
 			String sql = "UPDATE " + this.tableName + " SET name=?, color=? WHERE categoryid=?";
 			PreparedStatement preparedStatement = this.conn.getConnection().prepareStatement(sql);
-			preparedStatement.setString(1, entity.getName());
-			preparedStatement.setString(2, entity.getColor());
+			preparedStatement.setString(1, name);
+			preparedStatement.setString(2, color);
 			preparedStatement.setInt(3, entity.getCategoryid());
 			
 			int affectedRows = preparedStatement.executeUpdate();

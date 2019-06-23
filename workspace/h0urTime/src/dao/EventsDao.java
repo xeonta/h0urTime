@@ -9,6 +9,9 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.jsoup.Jsoup;
+import org.jsoup.safety.Whitelist;
+
 import exceptions.DbException;
 import model.Events;
 import model.DbConnection;
@@ -25,13 +28,18 @@ public class EventsDao extends GenericDao<Events> {
 			throw new DbException("No connection to Database");
 		
 		try {
+			Whitelist whitelist = new Whitelist();
+			String date = Jsoup.clean(entity.getDate(), whitelist);
+			String title = Jsoup.clean(entity.getTitle(), whitelist);
+			String description = Jsoup.clean(entity.getDescription(), whitelist);
+			
 			// NULL is working cause of NOT NULL AUTOINCREMENT combination
 			// at primary key create table statement!!!
 			String sql = "INSERT INTO " + this.tableName + " VALUES (NULL,?,?,?,?)";
 			PreparedStatement preparedStatement = this.conn.getConnection().prepareStatement(sql);
-			preparedStatement.setString(1, entity.getDate());
-			preparedStatement.setString(2, entity.getTitle());
-			preparedStatement.setString(3, entity.getDescription());
+			preparedStatement.setString(1, date);
+			preparedStatement.setString(2, title);
+			preparedStatement.setString(3, description);
 			preparedStatement.setInt(4, entity.getCategoryid());
 			
 			
@@ -66,11 +74,16 @@ public class EventsDao extends GenericDao<Events> {
 			throw new DbException("No connection to Database");
 		
 		try {	
+			Whitelist whitelist = new Whitelist();
+			String date = Jsoup.clean(entity.getDate(), whitelist);
+			String title = Jsoup.clean(entity.getTitle(), whitelist);
+			String description = Jsoup.clean(entity.getDescription(), whitelist);
+			
 			String sql = "UPDATE" + this.tableName + " SET date=?, title=?, description=?, categoryid=? WHERE eventid=?";
 			PreparedStatement preparedStatement = this.conn.getConnection().prepareStatement(sql);
-			preparedStatement.setString(1, entity.getDate());
-			preparedStatement.setString(2, entity.getTitle());
-			preparedStatement.setString(3, entity.getDescription());
+			preparedStatement.setString(1, date);
+			preparedStatement.setString(2, title);
+			preparedStatement.setString(3, description);
 			preparedStatement.setInt(4, entity.getCategoryid());
 			preparedStatement.setInt(5, entity.getEventid());
 						
