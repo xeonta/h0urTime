@@ -1,4 +1,4 @@
-<div id="demo" class="carousel slide" data-interval="false" data-ride="carousel" data-pause="hover" onload="createCalendar()">
+<div id="demo" class="carousel slide" data-interval="false" data-ride="carousel" data-pause="hover">
 
 	<!-- calendar element -->
 	<div class="carousel-inner">
@@ -9,9 +9,11 @@
 		
 
 
-		<a class="carousel-control-prev" href="#demo" data-slide="prev"> <i
-			class="fas fa-chevron-circle-left fa-2x"></i>
-		</a> <a class="carousel-control-next" href="#demo" data-slide="next">
+		<a class="carousel-control-prev" href="#demo" data-slide="prev"> 
+			<i class="fas fa-chevron-circle-left fa-2x"></i>
+		</a> 
+		
+		<a class="carousel-control-next" href="#demo" data-slide="next">
 			<i class="fas fa-chevron-circle-right fa-2x"></i>
 		</a>
 
@@ -56,6 +58,46 @@
 			<!-- Modal footer -->
 			<div class="modal-footer">
 				<button id="savebutton" type="submit" class="btn btn-success" value="Submit" data-dismiss="modal">Save</button>
+			</div>
+			</form>
+		</div>
+	</div>
+</div>
+
+<div class="modal" id="myModal2">
+	<div class="modal-dialog modal-lg">
+		<div class="modal-content">
+			<!-- Modal Header -->
+			<div class="modal-header">
+				<h4 class="modal-title">Edit current date</h4>
+				<button type="button" class="close" data-dismiss="modal">&times;</button>
+			</div>
+			<!-- Modal body -->
+			<form>
+			<div class="modal-body">
+				<div class="row">
+					<div class="col-sm-2"><label>Title: </label></div>
+					<div class="col-sm-9"><input id="editTitle" class="form-control" type="text" name="title"></div>
+				</div>
+				<div class="row">
+					<div class="col-sm-2"><label>Date: </label></div>
+					<div id="editDate" class="col-sm-9"><input id="date" class="form-control" type="date" name="date"></div>
+				</div>
+				<div class="row">
+					<div class="col-sm-2"><label>Description: </label></div>
+					<div id="editDescription" class="col-sm-9"><textarea id="description" class="form-control" rows="3" name="description"></textarea></div>
+				</div>
+				<div class="row">
+					<div class="col-sm-2"><label>Category: </label></div>
+					<div class="col-sm-9">
+					<select id="category-options2" class="form-control"></select>
+					</div>
+				</div>
+			</div>
+			<!-- Modal footer -->
+			<div class="modal-footer">
+				<button id="savebutton" type="submit" class="btn btn-success" value="Submit" data-dismiss="modal">Save</button>
+				<button id="savebutton" type="submit" class="btn btn-danger" value="Submit" data-dismiss="modal">Delete</button>
 			</div>
 			</form>
 		</div>
