@@ -172,7 +172,7 @@ function categoriesReady(fetchedJSON) {
 
 		let categoryName = $("<div/>");
 		categoryName.addClass("col-sm-8");
-		categoryName.append(category.name);
+	        categoryName.append(unescape(category.name));
 
 		let editCol = $("<div/>");
 		editCol.addClass("col-sm-1");

@@ -52,7 +52,7 @@ public class DbConnection {
 		if (!this.hasConnection()) {
 			try {
 				instance.getConnection().close();
-			} catch (SQLException e) {
+			} catch (Exception e) {
 				// dont bother
 			}
 		}
