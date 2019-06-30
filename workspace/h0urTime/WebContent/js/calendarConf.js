@@ -140,34 +140,3 @@ function setDaysByMonth() {
 
     loadEvents();
 }
-
-function loadCategories() { 
-	console.log("Categories loading");
-
-	$.ajax({
-		url: "rest/categoryservice/loadAll",
-		method: "GET",
-		datatype: "json",
-		contentType: "application/json",
-	})
-	.done(function(response) { 
-		console.log(response);
-		categoryOptionsReady(response);
-	})
-	.fail(function(jqXHR, statusText, error) { 
-		var errorMsg = "Response Code: " + jqXHR.status + " - Fehlermeldung: " + jqXHR.responseText;
-		console.log(errorMsg);
-	});
-
-	console.log("Categories finished loading");
-}
-
-function categoryOptionsReady(fetchedJSON) {
-    let categoryOptions = $("#category-options2");
-    categoryOptions.empty();
-
-    fetchedJSON.forEach((category) => {
-	let option = $(`<option id="${categoryid}">${category.name}</option>`);
-	categoryOptions.append(option);
-    });
-}

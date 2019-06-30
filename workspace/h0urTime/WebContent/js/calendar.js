@@ -57,23 +57,6 @@ function createEvent() {
     });
 }
 
-function loadEvents() { 
-	$.ajax({
-		url: "rest/eventservice/loadAll",
-		method: "GET",
-		datatype: "json",
-		contentType: "application/json",
-	})
-	.done(function(response) { 
-		console.log(response);
-		categoriesReady(response);
-	})
-	.fail(function(jqXHR, statusText, error) { 
-		var errorMsg = "Response Code: " + jqXHR.status + " - Fehlermeldung: " + jqXHR.responseText;
-		console.log(errorMsg);
-	});
-}
-
 function deleteEvent(id) { 
 
 	let postData = {
