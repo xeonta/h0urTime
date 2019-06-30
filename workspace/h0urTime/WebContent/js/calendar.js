@@ -3,10 +3,6 @@ $(onDocumentReady);
 function onDocumentReady() {
     loadCategories();
     connectButtons();
-
-    $("#category-options").change(function() {
-	categoryid = $(this).children(":selected").attr("id");
-    });
 }
 
 var categoryid;
@@ -31,6 +27,7 @@ function createEvent() {
     let title = escape($("#title").val());
     let date = escape($("#date").val());
     let description = escape($("#description").val());
+    let categoryid = escape($("#category-options").children(":selected").attr("id"));
     
     // Create JSON
     let postData = {
@@ -107,7 +104,7 @@ function categoryOptionsReady(fetchedJSON) {
     categoryOptions.empty();
 
     fetchedJSON.forEach((category) => {
-	let option = $('<option id="'+ categoryid + '">' + category.name + '</option>');
+	let option = $('<option id="'+ category.categoryid + '">' + category.name + '</option>');
 	categoryOptions.append(option);
     });
 }
