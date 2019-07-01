@@ -6,10 +6,10 @@ var days = [31,28,31,30,31,30,31,31,30,31,30,31];
 
 $(document).ready(function() {
     createCalendar();
-    connectButtons();
+    connectEditButtons();
 });
 
-function connectButtons() {
+function connectEditButtons() {
     $("#editEventButton").click(editEvent);
     $("#deleteEventButton").click(deleteEvent);
 }
@@ -95,7 +95,7 @@ function showEventsInCalendar(fetchedJSON) {
 	        .append(
 	                `<div id=\"${events.eventid}\">  
 	                    <button style=\"float:left; line-height:20px\" type=\"button\" class=\"btn btn-light\" data-toggle=\"modal\" data-target=\"#myModal2\" onclick=\"getEventInfos(\'${events.eventid}\',\'${events.date}\',\'${events.title}\',\'${events.description}\',\'${events.categoryid}\')\">
-	                        ${events.title}
+	                        ${unescape(events.title)}
 	                    </button></br>
 	                </div>`);
     	}

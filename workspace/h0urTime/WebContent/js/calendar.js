@@ -44,8 +44,8 @@ function createEvent() {
 	dataType: "json",
 	contentType: "application/json",
     })
-    .done(function() { 
-
+    .done(function() {
+		 loadContent("calendar.html");
     })
     .fail(function() { 
 	console.log("Edit error.");
