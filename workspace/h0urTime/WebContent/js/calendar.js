@@ -1,7 +1,7 @@
 $(onDocumentReady);
 
 function onDocumentReady() {
-    loadCategories();
+	loadCategories();
     connectButtons();
 }
 
@@ -75,15 +75,26 @@ function deleteEvent(id) {
 	});
 }
 
-function loadCategories() { 
+
+function loadCategories(categoryid) { 
+	console.log("Categories loading");
+  
 	$.ajax({
 		url: "rest/categoryservice/loadAll",
 		method: "GET",
 		datatype: "json",
 		contentType: "application/json",
 	})
-	.done(function(response) {
-		categoryOptionsReady(response);
+
+	.done(function(response) { 
+		console.log(response);
+		if(categoryid) {
+			getCurrentCategory(response,categoryid);
+		}
+		else {
+			categoryOptionsReady(response);
+			refreshCategories(response);
+		}	
 	})
 	.fail(function(jqXHR, statusText, error) { 
 		var errorMsg = "Response Code: " + jqXHR.status + " - Fehlermeldung: " + jqXHR.responseText;
@@ -97,6 +108,16 @@ function categoryOptionsReady(fetchedJSON) {
 
     fetchedJSON.forEach((category) => {
 	let option = $('<option id="'+ category.categoryid + '">' + category.name + '</option>');
+	categoryOptions.append(option);
+    });
+}
+
+function refreshCategories(fetchedJSON) {
+    let categoryOptions = $("#editCategory");
+    categoryOptions.empty();
+
+    fetchedJSON.forEach((category) => {
+	let option = $('<option onclick=\"\" id="'+ category.categoryid + '">' + category.name + '</option>');
 	categoryOptions.append(option);
     });
 }
