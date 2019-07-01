@@ -5,7 +5,6 @@ var months = ['Januar', 'Februar', 'März', 'April', 'Mai', 'Juni', 'Juli', 'Aug
 var days = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
 var editEventId;
 var editCategoryId;
-var editDate;
 
 $(document).ready(function() {
     createCalendar();
