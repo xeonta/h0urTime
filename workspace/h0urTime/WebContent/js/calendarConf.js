@@ -68,10 +68,9 @@ function setCurrentDate(){
     document.getElementById('carouselYear').innerHTML = currentDate.getFullYear();
 };
 
-function getCurrentDate() {
-    var datestr = currentDate.getFullYear() + "-0" + (currentDate.getMonth()+1).toString().slice(-2) + "-0" + (currentDate.getDay()).toString().slice(-2);
-
-    document.getElementById("date").value=datestr;
+function getCurrentDate(eventDate) {
+    console.log(eventDate);
+    document.getElementById("date").value=eventDate;
 }
 
 function getNextDate() {
@@ -213,22 +212,28 @@ function setDaysByMonth() {
 
     $("div.calendar div.row").html("");
 
-  
+    var dayDate;
+
     for (var i = 1; i <= days[currentMonth]; i++) {
+
         if(currentMonth < 9) {
             if(i < 10) {
-                $("div.calendar div.row").append(`<div style=\"overflow: auto\" id=\"${currentYear}-0${currentMonth+1}-0${i}\" class=\"col-xs-12 calendar-day\">0${i}<button type=\"button\" class=\"btn shadow-none\" data-toggle=\"modal\" data-target=\"#myModal\"><i class=\"fas fa-plus\" onclick=\"getCurrentDate()\"></i></button></div>`);
+                dayDate = `\'${currentYear}-0${currentMonth+1}-0${i}\'`
+                $("div.calendar div.row").append(`<div style=\"overflow: auto\" id=${dayDate} class=\"col-xs-12 calendar-day\">0${i}<button type=\"button\" class=\"btn shadow-none\" data-toggle=\"modal\" data-target=\"#myModal\"><i class=\"fas fa-plus\" onclick=\"getCurrentDate(${dayDate})\"></i></button></div>`);
             }
             else {
-                $("div.calendar div.row").append(`<div style=\"overflow: auto\" id=\"${currentYear}-0${currentMonth+1}-${i}\" class=\"col-xs-12 calendar-day\">${i}<button type=\"button\" class=\"btn shadow-none\" data-toggle=\"modal\" data-target=\"#myModal\"><i class=\"fas fa-plus\" onclick=\"getCurrentDate()\"></i></button></div>`);
+                dayDate = `\'${currentYear}-0${currentMonth+1}-${i}\'`
+                $("div.calendar div.row").append(`<div style=\"overflow: auto\" id=${dayDate} class=\"col-xs-12 calendar-day\">${i}<button type=\"button\" class=\"btn shadow-none\" data-toggle=\"modal\" data-target=\"#myModal\"><i class=\"fas fa-plus\" onclick=\"getCurrentDate(${dayDate})\"></i></button></div>`);
             }   
         }
         else {
             if(i < 10) {
-                $("div.calendar div.row").append(`<div style=\"overflow: auto\" id=\"${currentYear}-${currentMonth+1}-0${i}\" class=\"col-xs-12 calendar-day\">0${i}<button type=\"button\" class=\"btn shadow-none\" data-toggle=\"modal\" data-target=\"#myModal\"><i class=\"fas fa-plus\" onclick=\"getCurrentDate()\"></i></button></div>`);
+                dayDate = `\'${currentYear}-${currentMonth+1}-0${i}\'`
+                $("div.calendar div.row").append(`<div style=\"overflow: auto\" id=${dayDate} class=\"col-xs-12 calendar-day\">0${i}<button type=\"button\" class=\"btn shadow-none\" data-toggle=\"modal\" data-target=\"#myModal\"><i class=\"fas fa-plus\" onclick=\"getCurrentDate(${dayDate})\"></i></button></div>`);
             }
             else {
-                $("div.calendar div.row").append(`<div style=\"overflow: auto\" id=\"${currentYear}-${currentMonth+1}-${i}\" class=\"col-xs-12 calendar-day\">${i}<button type=\"button\" class=\"btn shadow-none\" data-toggle=\"modal\" data-target=\"#myModal\"><i class=\"fas fa-plus\" onclick=\"getCurrentDate()\"></i></button></div>`);
+                dayDate = `\'${currentYear}-${currentMonth+1}-${i}\'`
+                $("div.calendar div.row").append(`<div style=\"overflow: auto\" id=${dayDate} class=\"col-xs-12 calendar-day\">${i}<button type=\"button\" class=\"btn shadow-none\" data-toggle=\"modal\" data-target=\"#myModal\"><i class=\"fas fa-plus\" onclick=\"getCurrentDate(${dayDate})\"></i></button></div>`);
             }  
         }
            
