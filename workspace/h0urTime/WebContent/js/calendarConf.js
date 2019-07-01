@@ -6,7 +6,12 @@ var days = [31,28,31,30,31,30,31,31,30,31,30,31];
 
 $(document).ready(function() {
     createCalendar();
+    connectButtons();
 });
+
+function connectButtons() {
+    $("#deleteEventButton").click(deleteEvent);
+}
 
 function createCalendar(){
 
@@ -99,6 +104,29 @@ function showEventsInCalendar(fetchedJSON) {
 function getEventInfos(eventid,date,title,description,categoryid) {
 
     console.log(eventid,date,title,description,categoryid);
+}
+
+function deleteEvent(id) { 
+
+	let postData = {
+		event: eventid,
+	};
+
+	let deleteDataJsonString = JSON.stringify(postData);
+
+	$.ajax({
+		url: "rest/eventservice/delete",
+		method: "POST",
+		data: deleteDataJsonString,
+		datatype: "json",
+		contentType: "application/json",
+	})
+	.done(function() { 
+		loadEvents();
+	})
+	.fail(function() { 
+		console.log("Delete error.");
+	});
 }
 
 function setDaysByMonth() {
