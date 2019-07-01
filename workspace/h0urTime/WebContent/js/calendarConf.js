@@ -104,9 +104,9 @@ function showEventsInCalendar(fetchedJSON) {
 
 function getEventInfos(eventid,date,title,description,categoryid) {
 
-    document.getElementById("editTitle").value=title;
+    document.getElementById("editTitle").value=unescape(title);
     document.getElementById("editDate").value=date;
-    document.getElementById("editDescription").value=description;
+    document.getElementById("editDescription").value=unescape(description);
     loadCategories(categoryid);
 }
 
