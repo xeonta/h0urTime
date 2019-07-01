@@ -52,30 +52,6 @@ function createEvent() {
     });
 }
 
-function deleteEvent(id) { 
-
-	let postData = {
-		event: id,
-	};
-
-	let deleteDataJsonString = JSON.stringify(postData);
-
-	$.ajax({
-		url: "rest/eventservice/delete",
-		method: "POST",
-		data: deleteDataJsonString,
-		datatype: "json",
-		contentType: "application/json",
-	})
-	.done(function() {
-		loadEvents();
-	})
-	.fail(function() { 
-		console.log("Delete error.");
-	});
-}
-
-
 function loadCategories(categoryid) { 
 	console.log("Categories loading");
   

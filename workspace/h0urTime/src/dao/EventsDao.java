@@ -76,7 +76,7 @@ public class EventsDao extends GenericDao<Events> {
 			String title = Jsoup.clean(entity.getTitle(), whitelist);
 			String description = Jsoup.clean(entity.getDescription(), whitelist);
 			
-			String sql = "UPDATE" + this.tableName + " SET date=?, title=?, description=?, categoryid=? WHERE eventid=?";
+			String sql = "UPDATE " + this.tableName + " SET date=?, title=?, description=?, categoryid=? WHERE eventid=?";
 			PreparedStatement preparedStatement = this.conn.getConnection().prepareStatement(sql);
 			preparedStatement.setString(1, date);
 			preparedStatement.setString(2, title);
