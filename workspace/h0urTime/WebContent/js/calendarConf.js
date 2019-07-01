@@ -12,7 +12,7 @@ $(document).ready(function() {
 });
 
 function connectEditButtons() {
-    $("#editEventButton").click(editEvent);
+    $("#editEventButton").click(valEditInput);
     $("#deleteEventButton").click(deleteEvent);
 }
 
