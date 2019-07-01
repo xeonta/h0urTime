@@ -10,6 +10,7 @@ $(document).ready(function() {
 });
 
 function connectButtons() {
+    $("#editEventButton").click(editEvent);
     $("#deleteEventButton").click(deleteEvent);
 }
 
@@ -106,8 +107,43 @@ function getEventInfos(eventid,date,title,description,categoryid) {
     console.log(eventid,date,title,description,categoryid);
 }
 
+function editEvent() { 
+
+    // hier müssen noch die werte gefüllt werden
+    let eventId;
+    let eventDate;
+    let eventTitle = escape();
+    let eventDescription = escape();
+    let eventCategoryId;
+
+    let postData = {
+	eventid: modalEditId,
+	date: eventDate,
+	title: eventTitle,
+	description: eventDescription,
+	categoryid: eventCategoryId,
+    };
+    
+    let editDataJsonString = JSON.stringify(postData);
+    
+    $.ajax({
+	url: "rest/eventservice/update",
+	method: "POST",
+	data: editDataJsonString,
+	datatype: "json",
+	contentType: "application/json",
+    })
+    .done(function() { 
+	loadEvents();
+    })
+    .fail(function() { 
+	console.log("Edit error.");
+    });
+}
+
 function deleteEvent(id) { 
 
+    // hier muss noch die richige eventid übergeben werden
 	let postData = {
 		event: eventid,
 	};
