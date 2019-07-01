@@ -6,7 +6,13 @@ var days = [31,28,31,30,31,30,31,31,30,31,30,31];
 
 $(document).ready(function() {
     createCalendar();
+    connectButtons();
 });
+
+function connectButtons() {
+    $("#editEventButton").click(editEvent);
+    $("#deleteEventButton").click(deleteEvent);
+}
 
 function createCalendar(){
 
@@ -66,7 +72,6 @@ function getNextDate() {
 }
 
 function loadEvents() { 
-    console.log("loadEvents");
 	$.ajax({
 		url: "rest/eventservice/loadAll",
 		method: "GET",
@@ -85,7 +90,7 @@ function loadEvents() {
 function showEventsInCalendar(fetchedJSON) {
     fetchedJSON.forEach((events) => {
     	//only show events of category x if checkbox in category is checked
-    	if(selectedCategories.includes(String(events.categoryid))) {
+    	if(!selectedCategories.includes(String(events.categoryid))) {
 	        $("#"+events.date)
 	        .append(
 	                `<div id=\"${events.eventid}\">  
@@ -123,9 +128,65 @@ function getCurrentCategory(fetchedJSON, categoryid) {
     });
 }
 
-function setDaysByMonth() {
+function editEvent() { 
+
+    // hier müssen noch die werte gefüllt werden
+    let eventId;
+    let eventDate;
+    let eventTitle = escape();
+    let eventDescription = escape();
+    let eventCategoryId;
+
+    let postData = {
+	eventid: modalEditId,
+	date: eventDate,
+	title: eventTitle,
+	description: eventDescription,
+	categoryid: eventCategoryId,
+    };
     
-    console.log(days[currentMonth], currentMonth);
+    let editDataJsonString = JSON.stringify(postData);
+    
+    $.ajax({
+	url: "rest/eventservice/update",
+	method: "POST",
+	data: editDataJsonString,
+	datatype: "json",
+	contentType: "application/json",
+    })
+    .done(function() { 
+	loadEvents();
+    })
+    .fail(function() { 
+	console.log("Edit error.");
+    });
+}
+
+function deleteEvent(id) { 
+
+    // hier muss noch die richige eventid übergeben werden
+	let postData = {
+		event: eventid,
+	};
+
+	let deleteDataJsonString = JSON.stringify(postData);
+
+	$.ajax({
+		url: "rest/eventservice/delete",
+		method: "POST",
+		data: deleteDataJsonString,
+		datatype: "json",
+		contentType: "application/json",
+	})
+	.done(function() { 
+		loadEvents();
+	})
+	.fail(function() { 
+		console.log("Delete error.");
+	});
+}
+
+function setDaysByMonth() {
 
     let invalidDays = 35 -days[currentMonth];
 
@@ -136,21 +197,17 @@ function setDaysByMonth() {
         if(currentMonth < 9) {
             if(i < 10) {
                 $("div.calendar div.row").append(`<div style=\"overflow: auto\" id=\"${currentYear}-0${currentMonth+1}-0${i}\" class=\"col-xs-12 calendar-day\">0${i}<button type=\"button\" class=\"btn shadow-none\" data-toggle=\"modal\" data-target=\"#myModal\"><i class=\"fas fa-plus\"></i></button></div>`);
-                //console.log(currentYear+"-"+0+currentMonth+"-"+0+i);
             }
             else {
                 $("div.calendar div.row").append(`<div style=\"overflow: auto\" id=\"${currentYear}-0${currentMonth+1}-${i}\" class=\"col-xs-12 calendar-day\">${i}<button type=\"button\" class=\"btn shadow-none\" data-toggle=\"modal\" data-target=\"#myModal\"><i class=\"fas fa-plus\"></i></button></div>`);
-                //console.log(currentYear+"-"+0+currentMonth+"-"+i);
             }   
         }
         else {
             if(i < 10) {
                 $("div.calendar div.row").append(`<div style=\"overflow: auto\" id=\"${currentYear}-${currentMonth+1}-0${i}\" class=\"col-xs-12 calendar-day\">0${i}<button type=\"button\" class=\"btn shadow-none\" data-toggle=\"modal\" data-target=\"#myModal\"><i class=\"fas fa-plus\"></i></button></div>`);
-                //console.log(currentYear+"-"+currentMonth+"-"+0+i);
             }
             else {
                 $("div.calendar div.row").append(`<div style=\"overflow: auto\" id=\"${currentYear}-${currentMonth+1}-${i}\" class=\"col-xs-12 calendar-day\">${i}<button type=\"button\" class=\"btn shadow-none\" data-toggle=\"modal\" data-target=\"#myModal\"><i class=\"fas fa-plus\"></i></button></div>`);
-                //console.log(currentYear+"-"+currentMonth+"-"+i);
             }  
         }
            
@@ -159,8 +216,6 @@ function setDaysByMonth() {
     for (var i = 1; i <= invalidDays; i++) {
         $("div.calendar div.row").append(`<div class=\"col-xs-12 calendar-day calendar-no-current-month\"></div>`);
     }
-
-    console.log("Calendar generated");
 
     loadEvents();
 }
