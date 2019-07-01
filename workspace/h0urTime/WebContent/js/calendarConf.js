@@ -3,6 +3,9 @@ var currentMonth = 0;
 var currentYear = 0;
 var months = ['Januar', 'Februar', 'März', 'April', 'Mai', 'Juni', 'Juli', 'August', 'September', 'Oktober', 'November', 'Dezember'];
 var days = [31,28,31,30,31,30,31,31,30,31,30,31];
+var editEventId;
+var editCategoryId;
+var editDate;
 
 $(document).ready(function() {
     createCalendar();
@@ -104,6 +107,9 @@ function showEventsInCalendar(fetchedJSON) {
 
 function getEventInfos(eventid,date,title,description,categoryid) {
 
+    editEventId = eventid;
+    editCategoryId = categoryid;
+    editDate = date;
     document.getElementById("editTitle").value=unescape(title);
     document.getElementById("editDate").value=date;
     document.getElementById("editDescription").value=unescape(description);
@@ -128,21 +134,31 @@ function getCurrentCategory(fetchedJSON, categoryid) {
     });
 }
 
+function valEditInput() {
+    let title = $("#title").val();
+    let description = $("#editDescription").val();
+
+    if (title == "" || description == "") {
+	alert("Error. Fields must be filled out.")
+	return false;
+    } else {
+	editEvent();
+    }
+}
+
 function editEvent() { 
 
-    // hier müssen noch die werte gefüllt werden
-    let eventId;
-    let eventDate;
-    let eventTitle = escape();
-    let eventDescription = escape();
-    let eventCategoryId;
+    let eventDate = $("#editDate");
+    let eventTitle = escape($("#editTitle").val());
+    let eventDescription = escape($("#editDescription").val());
+    let eventCategoryId = $("#categoryid");
 
     let postData = {
-	eventid: modalEditId,
-	date: eventDate,
+	eventid: editEventId,
+	date: editDate,
 	title: eventTitle,
 	description: eventDescription,
-	categoryid: eventCategoryId,
+	categoryid: editCategoryId,
     };
     
     let editDataJsonString = JSON.stringify(postData);
@@ -155,34 +171,35 @@ function editEvent() {
 	contentType: "application/json",
     })
     .done(function() { 
-	loadEvents();
+	loadContent("calendar.html");
     })
     .fail(function() { 
 	console.log("Edit error.");
     });
 }
 
-function deleteEvent(id) { 
+function deleteEvent() { 
 
-    // hier muss noch die richige eventid übergeben werden
+    let deleteEventId = editEventId;
+    console.log(deleteEvent);
 	let postData = {
-		event: eventid,
+	    eventid: editEventId,
 	};
 
 	let deleteDataJsonString = JSON.stringify(postData);
 
 	$.ajax({
-		url: "rest/eventservice/delete",
-		method: "POST",
-		data: deleteDataJsonString,
-		datatype: "json",
-		contentType: "application/json",
+	    url: "rest/eventservice/delete",
+	    method: "POST",
+	    data: deleteDataJsonString,
+	    datatype: "json",
+	    contentType: "application/json",
 	})
-	.done(function() { 
-		loadEvents();
+	.done(function() {
+	    loadContent("calendar.html");
 	})
 	.fail(function() { 
-		console.log("Delete error.");
+	    console.log("Delete error.");
 	});
 }
 
