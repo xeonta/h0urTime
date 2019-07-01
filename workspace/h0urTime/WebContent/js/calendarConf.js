@@ -115,7 +115,6 @@ function getEventInfos(eventid, date, title, description, categoryid) {
 
     editEventId = eventid;
     editCategoryId = categoryid;
-    editDate = date;
     document.getElementById("editTitle").value=unescape(title);
     document.getElementById("editDate").value=date;
     document.getElementById("editDescription").value=unescape(description);
@@ -154,14 +153,14 @@ function valEditInput() {
 
 function editEvent() { 
 
-    let eventDate = $("#editDate");
+    let eventDate = $("#editDate").val();
     let eventTitle = escape($("#editTitle").val());
     let eventDescription = escape($("#editDescription").val());
     let eventCategoryId = $("#categoryid");
 
     let postData = {
 	eventid: editEventId,
-	date: editDate,
+	date: eventDate,
 	title: eventTitle,
 	description: eventDescription,
 	categoryid: editCategoryId,
