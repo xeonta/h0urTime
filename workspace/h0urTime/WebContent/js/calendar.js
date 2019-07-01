@@ -5,8 +5,6 @@ function onDocumentReady() {
     connectButtons();
 }
 
-var categoryid;
-
 function connectButtons() {
     $("#savebutton").click(valCreateEventInput);
 }
@@ -69,8 +67,7 @@ function deleteEvent(id) {
 		datatype: "json",
 		contentType: "application/json",
 	})
-	.done(function() { 
-		console.log("Delete successful.");
+	.done(function() {
 		loadEvents();
 	})
 	.fail(function() { 
@@ -79,24 +76,19 @@ function deleteEvent(id) {
 }
 
 function loadCategories() { 
-	console.log("Categories loading");
-
 	$.ajax({
 		url: "rest/categoryservice/loadAll",
 		method: "GET",
 		datatype: "json",
 		contentType: "application/json",
 	})
-	.done(function(response) { 
-		console.log(response);
+	.done(function(response) {
 		categoryOptionsReady(response);
 	})
 	.fail(function(jqXHR, statusText, error) { 
 		var errorMsg = "Response Code: " + jqXHR.status + " - Fehlermeldung: " + jqXHR.responseText;
 		console.log(errorMsg);
 	});
-
-	console.log("Categories finished loading");
 }
 
 function categoryOptionsReady(fetchedJSON) {

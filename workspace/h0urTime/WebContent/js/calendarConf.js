@@ -66,7 +66,6 @@ function getNextDate() {
 }
 
 function loadEvents() { 
-    console.log("loadEvents");
 	$.ajax({
 		url: "rest/eventservice/loadAll",
 		method: "GET",
@@ -85,7 +84,7 @@ function loadEvents() {
 function showEventsInCalendar(fetchedJSON) {
     fetchedJSON.forEach((events) => {
     	//only show events of category x if checkbox in category is checked
-    	if(selectedCategories.includes(String(events.categoryid))) {
+    	if(!selectedCategories.includes(String(events.categoryid))) {
 	        $("#"+events.date)
 	        .append(
 	                `<div id=\"${events.eventid}\">  
@@ -103,8 +102,6 @@ function getEventInfos(eventid,date,title,description,categoryid) {
 }
 
 function setDaysByMonth() {
-    
-    console.log(days[currentMonth], currentMonth);
 
     let invalidDays = 35 -days[currentMonth];
 
@@ -115,21 +112,17 @@ function setDaysByMonth() {
         if(currentMonth < 9) {
             if(i < 10) {
                 $("div.calendar div.row").append(`<div style=\"overflow: auto\" id=\"${currentYear}-0${currentMonth+1}-0${i}\" class=\"col-xs-12 calendar-day\">0${i}<button type=\"button\" class=\"btn shadow-none\" data-toggle=\"modal\" data-target=\"#myModal\"><i class=\"fas fa-plus\"></i></button></div>`);
-                //console.log(currentYear+"-"+0+currentMonth+"-"+0+i);
             }
             else {
                 $("div.calendar div.row").append(`<div style=\"overflow: auto\" id=\"${currentYear}-0${currentMonth+1}-${i}\" class=\"col-xs-12 calendar-day\">${i}<button type=\"button\" class=\"btn shadow-none\" data-toggle=\"modal\" data-target=\"#myModal\"><i class=\"fas fa-plus\"></i></button></div>`);
-                //console.log(currentYear+"-"+0+currentMonth+"-"+i);
             }   
         }
         else {
             if(i < 10) {
                 $("div.calendar div.row").append(`<div style=\"overflow: auto\" id=\"${currentYear}-${currentMonth+1}-0${i}\" class=\"col-xs-12 calendar-day\">0${i}<button type=\"button\" class=\"btn shadow-none\" data-toggle=\"modal\" data-target=\"#myModal\"><i class=\"fas fa-plus\"></i></button></div>`);
-                //console.log(currentYear+"-"+currentMonth+"-"+0+i);
             }
             else {
                 $("div.calendar div.row").append(`<div style=\"overflow: auto\" id=\"${currentYear}-${currentMonth+1}-${i}\" class=\"col-xs-12 calendar-day\">${i}<button type=\"button\" class=\"btn shadow-none\" data-toggle=\"modal\" data-target=\"#myModal\"><i class=\"fas fa-plus\"></i></button></div>`);
-                //console.log(currentYear+"-"+currentMonth+"-"+i);
             }  
         }
            
@@ -138,8 +131,6 @@ function setDaysByMonth() {
     for (var i = 1; i <= invalidDays; i++) {
         $("div.calendar div.row").append(`<div class=\"col-xs-12 calendar-day calendar-no-current-month\"></div>`);
     }
-
-    console.log("Calendar generated");
 
     loadEvents();
 }

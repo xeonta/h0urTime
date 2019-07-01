@@ -37,12 +37,11 @@ function connectCheckbox() {
 	// add or remove categories from the selectedCategories array
 	$(":checkbox").click(function(){
 	    if($(this).is(':checked')){
-	        selectedCategories.push($(this).val());
+	    	selectedCategories.push($(this).val());
+	    	
 	    } else {
 	    	selectedCategories.splice(selectedCategories.indexOf($(this).val()), 1);
 	    }
-	    console.log("Selected Categories:");
-        console.log(selectedCategories);
 	});
 }
 
@@ -73,25 +72,20 @@ function createCategory() {
 	});
 }
 
-function loadCategories() { 
-	console.log("Categories loading");
-
+function loadCategories() {
 	$.ajax({
 		url: "rest/categoryservice/loadAll",
 		method: "GET",
 		datatype: "json",
 		contentType: "application/json",
 	})
-	.done(function(response) { 
-		console.log(response);
+	.done(function(response) {
 		categoriesReady(response);
 	})
 	.fail(function(jqXHR, statusText, error) { 
 		var errorMsg = "Response Code: " + jqXHR.status + " - Fehlermeldung: " + jqXHR.responseText;
 		console.log(errorMsg);
 	});
-
-	console.log("Categories finished loading");
 }
 
 function deleteCategory(id) { 
@@ -109,8 +103,7 @@ function deleteCategory(id) {
 		datatype: "json",
 		contentType: "application/json",
 	})
-	.done(function() { 
-		console.log("Delete successful.");
+	.done(function() {
 		loadCategories();
 	})
 	.fail(function() { 
