@@ -99,7 +99,28 @@ function showEventsInCalendar(fetchedJSON) {
 
 function getEventInfos(eventid,date,title,description,categoryid) {
 
-    console.log(eventid,date,title,description,categoryid);
+    document.getElementById("editTitle").value=title;
+    document.getElementById("editDate").value=date;
+    document.getElementById("editDescription").value=description;
+    loadCategories(categoryid);
+}
+
+function getCurrentCategory(fetchedJSON, categoryid) {
+
+    var currentCategory;
+
+    fetchedJSON.forEach((events) => {
+        if(events.categoryid == categoryid) {
+            currentCategory = events.name;
+        }
+    });
+
+    document.getElementById("editCategory").innerHTML='<option id="'+ categoryid + '">' + currentCategory + '</option>';
+
+    $("#editCategory").one("click",function(event) {
+        loadCategories();
+        $(this).off(event);
+    });
 }
 
 function setDaysByMonth() {
