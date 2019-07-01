@@ -2,25 +2,20 @@ $(document).ready(function() {
 	loadEvents();
 });
 
-function loadEvents() { 
-	console.log("Events loading");
-	
+function loadEvents() {
 	$.ajax({
 		url: "rest/eventservice/loadAll",
 		method: "GET",
 		datatype: "json",
 		contentType: "application/json",
 	})
-	.done(function(response) { 
-		console.log(response);
+	.done(function(response) {
 		overviewReady(response);
 	})
 	.fail(function(jqXHR, statusText, error) { 
 		var errorMsg = "Response Code: " + jqXHR.status + " - Fehlermeldung: " + jqXHR.responseText;
 		console.log(errorMsg);
 	});
-
-	console.log("Events finished loading");
 }
 
 function overviewReady(fetchedJSON) {
