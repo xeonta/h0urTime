@@ -138,7 +138,7 @@ function getCurrentCategory(fetchedJSON, categoryid) {
 }
 
 function valEditInput() {
-    let title = $("#title").val();
+    let title = $("#editTitle").val();
     let description = $("#editDescription").val();
 
     if (title == "" || description == "") {
