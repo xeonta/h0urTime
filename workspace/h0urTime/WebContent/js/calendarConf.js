@@ -99,13 +99,8 @@ function showEventsInCalendar(fetchedJSON) {
     	//only show events of category x if checkbox in category is checked
     	if(!selectedCategories.includes(String(events.categoryid))) {
 	        $("#"+events.date)
-	        .append(
-	                `<div id=\"${events.eventid}\">  
-	                    <button style=\"float:left; line-height:20px\" type=\"button\" class=\"btn btn-light\" data-toggle=\"modal\" data-target=\"#myModal2\" onclick=\"getEventInfos(\'${events.eventid}\',\'${events.date}\',\'${events.title}\',\'${events.description}\',\'${events.categoryid}\')\">
-	                        ${(events.title)}
-	                    </button></br>
-	                </div>`);
-    	}
+	        .append('<div id="' + events.eventid + '"><button style="float:left; line-height:20px" type="button" class="btn btn-light" data-toggle="modal" data-target="#myModal2" onclick="getEventInfos(\'' + events.eventid + '\', \'' + events.date + '\', \'' + escapeUserInput(events.title)+ '\', \'' + escapeUserInput(events.description)+ '\', \'' + events.categoryid + '\')">' + events.title + '</button></br></div>');
+	}
     });
 }
 
