@@ -22,10 +22,10 @@ function valCreateEventInput() {
 }
 
 function createEvent() {
-    let title = escape($("#title").val());
-    let date = escape($("#date").val());
-    let description = escape($("#description").val());
-    let categoryid = escape($("#category-options").children(":selected").attr("id"));
+    let title = escapeUserInput($("#title").val());
+    let date = escapeUserInput($("#date").val());
+    let description = escapeUserInput($("#description").val());
+    let categoryid = escapeUserInput($("#category-options").children(":selected").attr("id"));
     
     // Create JSON
     let postData = {
@@ -50,6 +50,14 @@ function createEvent() {
     .fail(function() { 
 	console.log("Edit error.");
     });
+}
+
+function escapeUserInput(userInput) {
+    return userInput
+	.replace(/&/g, '&amp;')
+	.replace(/>/g, '&gt;')
+	.replace(/</g, '&lt;')
+	.replace(/"/g, '&quot;');
 }
 
 function loadCategories(categoryid) { 

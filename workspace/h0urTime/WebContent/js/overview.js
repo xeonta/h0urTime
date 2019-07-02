@@ -61,11 +61,11 @@ function overviewReady(fetchedJSON) {
 			eventTbody.append(eventTdDate);
 
 			let eventTdTitel = $("<td/>");
-		        eventTdTitel.append(unescape(event.title));
+		        eventTdTitel.append(event.title);
 			eventTbody.append(eventTdTitel);
 
 			let eventTdDesc = $("<td/>");
-		        eventTdDesc.append(unescape(event.description));
+		        eventTdDesc.append(event.description);
 			eventTbody.append(eventTdDesc);
 
         }

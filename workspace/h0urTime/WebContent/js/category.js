@@ -32,6 +32,13 @@ function valEmptyEditInput() {
     }
 }
 
+function escapeUserInput(userInput) {
+    return userInput
+	.replace(/&/g, '&amp;')
+	.replace(/>/g, '&gt;')
+	.replace(/</g, '&lt;')
+	.replace(/"/g, '&quot;');
+}
 
 function connectCheckbox() {
 	// add or remove categories from the selectedCategories array
@@ -47,7 +54,7 @@ function connectCheckbox() {
 
 function createCategory() {
 
-    let nameInput = escape($("#name").val());
+    let nameInput = escapeUserInput($("#name").val());
 	//let colorInput = $("#color");
 
 	let postData = {
@@ -113,7 +120,7 @@ function deleteCategory(id) {
 
 function editCategory() { 
 	
-    let nameUpdate = escape($("#editname").val());
+    let nameUpdate = escapeUserInput($("#editname").val());
 	//let colorInput = $("#color");
 
 	let postData = {
@@ -165,7 +172,7 @@ function categoriesReady(fetchedJSON) {
 
 		let categoryName = $("<div/>");
 		categoryName.addClass("col-sm-8");
-	        categoryName.append(unescape(category.name));
+	        categoryName.append(category.name);
 
 		let editCol = $("<div/>");
 		editCol.addClass("col-sm-1");

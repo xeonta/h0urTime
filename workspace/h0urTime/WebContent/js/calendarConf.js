@@ -102,7 +102,7 @@ function showEventsInCalendar(fetchedJSON) {
 	        .append(
 	                `<div id=\"${events.eventid}\">  
 	                    <button style=\"float:left; line-height:20px\" type=\"button\" class=\"btn btn-light\" data-toggle=\"modal\" data-target=\"#myModal2\" onclick=\"getEventInfos(\'${events.eventid}\',\'${events.date}\',\'${events.title}\',\'${events.description}\',\'${events.categoryid}\')\">
-	                        ${unescape(events.title)}
+	                        ${(events.title)}
 	                    </button></br>
 	                </div>`);
     	}
@@ -113,9 +113,9 @@ function getEventInfos(eventid, date, title, description, categoryid) {
 
     editEventId = eventid;
     editCategoryId = categoryid;
-    document.getElementById("editTitle").value=unescape(title);
+    document.getElementById("editTitle").value=title;
     document.getElementById("editDate").value=date;
-    document.getElementById("editDescription").value=unescape(description);
+    document.getElementById("editDescription").value=description;
     loadCategories(categoryid);
 }
 
@@ -152,8 +152,8 @@ function valEditInput() {
 function editEvent() { 
 
     let eventDate = $("#editDate").val();
-    let eventTitle = escape($("#editTitle").val());
-    let eventDescription = escape($("#editDescription").val());
+    let eventTitle = escapeUserInput($("#editTitle").val());
+    let eventDescription = escapeUserInput($("#editDescription").val());
     let eventCategoryId = $("#categoryid");
 
     let postData = {
@@ -179,6 +179,14 @@ function editEvent() {
     .fail(function() { 
 	console.log("Edit error.");
     });
+}
+
+function escapeUserInput(userInput) {
+    return userInput
+    	.replace(/&/g, '&amp;')
+	.replace(/>/g, '&gt;')
+	.replace(/</g, '&lt;')
+	.replace(/"/g, '&quot;');
 }
 
 function deleteEvent() { 
