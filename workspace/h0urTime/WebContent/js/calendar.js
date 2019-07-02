@@ -61,7 +61,6 @@ function escapeUserInput(userInput) {
 }
 
 function loadCategories(categoryid) { 
-	console.log("Categories loading");
   
 	$.ajax({
 		url: "rest/categoryservice/loadAll",
@@ -71,7 +70,6 @@ function loadCategories(categoryid) {
 	})
 
 	.done(function(response) { 
-		console.log(response);
 		if(categoryid) {
 			getCurrentCategory(response,categoryid);
 		}

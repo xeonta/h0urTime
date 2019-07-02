@@ -22,7 +22,7 @@ function valEmptyCreateInput() {
 }
 
 function valEmptyEditInput() {
-    let input = $("#name").val();
+    let input = $("#editname").val();
 
     if (input == "") {
 	alert("Error. Fields must be filled out.");
@@ -146,8 +146,9 @@ function editCategory() {
 	});
 }
 
-function passIdToModal(id) {
-	modalEditId = id;
+function passIdToModal(id, name) {
+    modalEditId = id;
+    document.getElementById("editname").value = name;
 }
 
 function categoriesReady(fetchedJSON) { 
@@ -176,7 +177,7 @@ function categoriesReady(fetchedJSON) {
 
 		let editCol = $("<div/>");
 		editCol.addClass("col-sm-1");
-		let editButton = $('<button type="button" id="editbutton" data-toggle="modal" onclick="passIdToModal(\'' + category.categoryid + '\')" data-target="#editModal"/>');
+		let editButton = $('<button type="button" id="editbutton" data-toggle="modal" onclick="passIdToModal(\'' + category.categoryid + '\', \'' + category.name + '\')" data-target="#editModal"/>');
 		editButton.addClass("btn btn-primary btn-sm");
 		let editIcon = $("<i/>");
 		editIcon.addClass("fas fa-edit");
