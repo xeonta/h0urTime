@@ -22,7 +22,7 @@ function valEmptyCreateInput() {
 }
 
 function valEmptyEditInput() {
-    let input = $("#name").val();
+    let input = $("#editname").val();
 
     if (input == "") {
 	alert("Error. Fields must be filled out.");
@@ -32,6 +32,13 @@ function valEmptyEditInput() {
     }
 }
 
+function escapeUserInput(userInput) {
+    return userInput
+	.replace(/&/g, '&amp;')
+	.replace(/>/g, '&gt;')
+	.replace(/</g, '&lt;')
+	.replace(/"/g, '&quot;');
+}
 
 function connectCheckbox() {
 	// add or remove categories from the selectedCategories array
@@ -47,7 +54,7 @@ function connectCheckbox() {
 
 function createCategory() {
 
-    let nameInput = escape($("#name").val());
+    let nameInput = escapeUserInput($("#name").val());
 	//let colorInput = $("#color");
 
 	let postData = {
@@ -113,7 +120,7 @@ function deleteCategory(id) {
 
 function editCategory() { 
 	
-    let nameUpdate = escape($("#editname").val());
+    let nameUpdate = escapeUserInput($("#editname").val());
 	//let colorInput = $("#color");
 
 	let postData = {
@@ -139,8 +146,9 @@ function editCategory() {
 	});
 }
 
-function passIdToModal(id) {
-	modalEditId = id;
+function passIdToModal(id, name) {
+    modalEditId = id;
+    document.getElementById("editname").value = name;
 }
 
 function categoriesReady(fetchedJSON) { 
@@ -165,11 +173,11 @@ function categoriesReady(fetchedJSON) {
 
 		let categoryName = $("<div/>");
 		categoryName.addClass("col-sm-8");
-	        categoryName.append(unescape(category.name));
+	        categoryName.append(category.name);
 
 		let editCol = $("<div/>");
 		editCol.addClass("col-sm-1");
-		let editButton = $('<button type="button" id="editbutton" data-toggle="modal" onclick="passIdToModal(\'' + category.categoryid + '\')" data-target="#editModal"/>');
+		let editButton = $('<button type="button" id="editbutton" data-toggle="modal" onclick="passIdToModal(\'' + category.categoryid + '\', \'' + category.name + '\')" data-target="#editModal"/>');
 		editButton.addClass("btn btn-primary btn-sm");
 		let editIcon = $("<i/>");
 		editIcon.addClass("fas fa-edit");
