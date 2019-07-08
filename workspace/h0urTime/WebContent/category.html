@@ -4,66 +4,65 @@
 </div>
 
 <div class="container text-center">
+	<div id="category-container"></div>
 	<div class="row">
 		<div class="col-sm-2">
-			<label class="checkbox-inline"><input type="checkbox"
-				value=""></label>
-		</div>
-		<div class="col-sm-8">Home</div>
-		<div class="col-sm-1">
-			<button type="button" class="btn btn-primary btn-sm">
-				<i class="fas fa-edit"></i>
-			</button>
-		</div>
-		<div class="col-sm-1">
-			<button type="button" class="btn btn-primary btn-sm">
-				<i class="fas fa-trash-alt"></i>
-			</button>
-		</div>
-	</div>
-	<hr>
-	<div class="row">
-		<div class="col-sm-2">
-			<label class="checkbox-inline"><input type="checkbox"
-				value=""></label>
-		</div>
-		<div class="col-sm-8">Work</div>
-		<div class="col-sm-1">
-			<button type="button" class="btn btn-primary btn-sm">
-				<i class="fas fa-edit"></i>
-			</button>
-		</div>
-		<div class="col-sm-1">
-			<button type="button" class="btn btn-primary btn-sm">
-				<i class="fas fa-trash-alt"></i>
-			</button>
-		</div>
-	</div>
-	<hr>
-	<div class="row">
-		<div class="col-sm-2">
-			<label class="checkbox-inline"><input type="checkbox"
-				value=""></label>
-		</div>
-		<div class="col-sm-8">School</div>
-		<div class="col-sm-1">
-			<button type="button" class="btn btn-primary btn-sm">
-				<i class="fas fa-edit"></i>
-			</button>
-		</div>
-		<div class="col-sm-1">
-			<button type="button" class="btn btn-primary btn-sm">
-				<i class="fas fa-trash-alt"></i>
-			</button>
-		</div>
-	</div>
-	<hr>
-	<div class="row">
-		<div class="col-sm-2">
-			<button type="button" class="btn btn-default btn-md">
+			<button type="button" class="btn btn-default btn-md" data-toggle="modal" data-target="#createModal">
 				<i class="fas fa-plus"></i>
 			</button>
 		</div>
-
 	</div>
 </div>
+
+<!-- The Create Modal -->
+<div class="modal" id="createModal">
+	<div class="modal-dialog modal-md">
+		<div class="modal-content">
+			<!-- Modal Header -->
+			<div class="modal-header">
+				<h4 class="modal-title">Create new category</h4>
+				<button type="button" class="close" data-dismiss="modal">&times;</button>
+			</div>
+			<!-- Modal body -->
+			<form>
+			<div class="modal-body form-group">
+				<div class="row">
+					<div class="col-sm-2"><label for="name">Name: </label></div>
+					<div class="col-sm-9"><input class="form-control" type="text" id="name" name="name"></div>
+				</div>	
+			</div>
+			</form>
+			<!-- Modal footer -->
+			<div class="modal-footer">
+				<button type="button" id="savebutton" class="btn btn-success" data-dismiss="modal">Save</button>
+			</div>
+		</div>
+	</div>
+</div>
+
+<!-- The Edit Modal -->
+<div class="modal" id="editModal">
+	<div class="modal-dialog modal-md">
+		<div class="modal-content">
+			<!-- Modal Header -->
+			<div class="modal-header">
+				<h4 class="modal-title">Edit category</h4>
+				<button type="button" class="close" data-dismiss="modal">&times;</button>
+			</div>
+			<!-- Modal body -->
+			<form>
+			<div class="modal-body form-group">
+				<div class="row">
+					<div class="col-sm-2"><label for="name">Name: </label></div>
+					<div class="col-sm-9"><input class="form-control" type="text" id="editname" name="editname"></div>
+				</div>	
+			</div>
+			</form>
+			<!-- Modal footer -->
+			<div class="modal-footer">
+				<button type="button" id="editbutton" class="btn btn-success" data-dismiss="modal">Save edit</button>
+			</div>
+		</div>
+	</div>
+</div>
+<script src="js/category.js"></script>

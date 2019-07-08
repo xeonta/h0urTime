@@ -17,6 +17,25 @@ public class Category {
 	private String name;
 	private String color;
 	
+	public Category() {
+		
+	} 
+	
+	public Category(String name, String color) {
+		this.name = name;
+		this.color = color;
+	} 
+	
+	public Category(int categoryid, String name, String color) {
+		this.categoryid = categoryid;
+		this.name = name;
+		this.color = color;
+	} 
+	
+	public void setCategoryid(int l) {
+		this.categoryid = l;
+	}
+	
 	public int getCategoryid() {
 		return categoryid;
 	}

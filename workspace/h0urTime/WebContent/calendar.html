@@ -1,57 +1,19 @@
-<div id="demo" data-ride="carousel">
+<div id="demo" class="carousel slide" data-interval="false" data-ride="carousel" data-pause="hover">
 
-	<!-- Left and right controls -->
-
-	<!-- Indicators -->
-	<!-- <ul class="carousel-indicators">
-				  <li data-target="#demo" data-slide-to="0" class="active"></li>
-				  <li data-target="#demo" data-slide-to="1"></li>
-				  <li data-target="#demo" data-slide-to="2"></li>
-				</ul>-->
-
-	<!-- The slideshow -->
+	<!-- calendar element -->
 	<div class="carousel-inner">
 		<div class="carousel-item active">
-			<h1 class="title text-center">Januar 2014</h1>
+			<span><h1 id="carouselMonth" class="title text-center"></h1><h1> </h1>
+			<h1 id="carouselYear" name="test" class="title text-center"></h1></span>
 		</div>
-		<div class="carousel-item">
-			<h1 class="title text-center">Februar 2014</h1>
-		</div>
-		<div class="carousel-item">
-			<h1 class="title text-center">März 2014</h1>
-		</div>
-		<div class="carousel-item">
-			<h1 class="title text-center">April 2014</h1>
-		</div>
-		<div class="carousel-item">
-			<h1 class="title text-center">Mai 2014</h1>
-		</div>
-		<div class="carousel-item">
-			<h1 class="title text-center">Juni 2014</h1>
-		</div>
-		<div class="carousel-item">
-			<h1 class="title text-center">Juli 2014</h1>
-		</div>
-		<div class="carousel-item">
-			<h1 class="title text-center">August 2014</h1>
-		</div>
-		<div class="carousel-item">
-			<h1 class="title text-center">September 2014</h1>
-		</div>
-		<div class="carousel-item">
-			<h1 class="title text-center">Oktober 2014</h1>
-		</div>
-		<div class="carousel-item">
-			<h1 class="title text-center">November 2014</h1>
-		</div>
-		<div class="carousel-item">
-			<h1 class="title text-center">Dezember 2014</h1>
-		</div>
+		
 
 
-		<a class="carousel-control-prev" href="#demo" data-slide="prev"> <i
-			class="fas fa-chevron-circle-left fa-2x"></i>
-		</a> <a class="carousel-control-next" href="#demo" data-slide="next">
+		<a class="carousel-control-prev" href="#demo" data-slide="prev"> 
+			<i class="fas fa-chevron-circle-left fa-2x"></i>
+		</a> 
+		
+		<a class="carousel-control-next" href="#demo" data-slide="next">
 			<i class="fas fa-chevron-circle-right fa-2x"></i>
 		</a>
 
@@ -59,244 +21,90 @@
 </div>
 
 <div class="calendar col-sm-12" data-toggle="calendar">
-	<div class="row">
-		<div class="calendar-day calendar-no-current-month">29</div>
-		<div class="col-xs-12 calendar-day calendar-no-current-month">
-			30</div>
-		<div class="col-xs-12 calendar-day">
-			01
-			<button class="btn shadow-none"
-				onclick=" window.open(this.href,'targetWindow','toolbar=no,location=no,status=no,menubar=no,scrollbars=yes,resizable=yes,width=100px,height=100px')">
-				<i class="fas fa-plus"></i>
-			</button>
-		</div>
-		<div class="col-xs-12 calendar-day nana">
-			02
-			<button class="btn shadow-none"
-				onclick=" window.open(this.href,'targetWindow','toolbar=no,location=no,status=no,menubar=no,scrollbars=yes,resizable=yes,width=100px,height=100px')">
-				<i class="fas fa-plus"></i>
-			</button>
-		</div>
-		<div class="col-xs-12 calendar-day nana">
-			03
-			<button class="btn shadow-none"
-				onclick=" window.open(this.href,'targetWindow','toolbar=no,location=no,status=no,menubar=no,scrollbars=yes,resizable=yes,width=100px,height=100px')">
-				<i class="fas fa-plus"></i>
-			</button>
-		</div>
-		<div class="col-xs-12 calendar-day nana">
-			04
-			<button class="btn shadow-none"
-				onclick=" window.open(this.href,'targetWindow','toolbar=no,location=no,status=no,menubar=no,scrollbars=yes,resizable=yes,width=100px,height=100px')">
-				<i class="fas fa-plus"></i>
-			</button>
-		</div>
-		<div class="col-xs-12 calendar-day nana">
-			05
-			<button class="btn shadow-none"
-				onclick=" window.open(this.href,'targetWindow','toolbar=no,location=no,status=no,menubar=no,scrollbars=yes,resizable=yes,width=100px,height=100px')">
-				<i class="fas fa-plus"></i>
-			</button>
-		</div>
-		<div class="col-xs-12 calendar-day nana">
-			06
-			<button class="btn shadow-none"
-				onclick=" window.open(this.href,'targetWindow','toolbar=no,location=no,status=no,menubar=no,scrollbars=yes,resizable=yes,width=100px,height=100px')">
-				<i class="fas fa-plus"></i>
-			</button>
-		</div>
-		<div class="col-xs-12 calendar-day nana">
-			07
-			<button class="btn shadow-none"
-				onclick=" window.open(this.href,'targetWindow','toolbar=no,location=no,status=no,menubar=no,scrollbars=yes,resizable=yes,width=100px,height=100px')">
-				<i class="fas fa-plus"></i>
-			</button>
-		</div>
-		<div class="col-xs-12 calendar-day nana">
-			08
-			<button class="btn shadow-none"
-				onclick=" window.open(this.href,'targetWindow','toolbar=no,location=no,status=no,menubar=no,scrollbars=yes,resizable=yes,width=100px,height=100px')">
-				<i class="fas fa-plus"></i>
-			</button>
-		</div>
-		<div class="col-xs-12 calendar-day nana">
-			09
-			<button class="btn shadow-none"
-				onclick=" window.open(this.href,'targetWindow','toolbar=no,location=no,status=no,menubar=no,scrollbars=yes,resizable=yes,width=100px,height=100px')">
-				<i class="fas fa-plus"></i>
-			</button>
-		</div>
-		<div class="col-xs-12 calendar-day nana">
-			10
-			<button class="btn shadow-none"
-				onclick=" window.open(this.href,'targetWindow','toolbar=no,location=no,status=no,menubar=no,scrollbars=yes,resizable=yes,width=100px,height=100px')">
-				<i class="fas fa-plus"></i>
-			</button>
-		</div>
-		<div class="col-xs-12 calendar-day nana">
-			11
-			<button class="btn shadow-none"
-				onclick=" window.open(this.href,'targetWindow','toolbar=no,location=no,status=no,menubar=no,scrollbars=yes,resizable=yes,width=100px,height=100px')">
-				<i class="fas fa-plus"></i>
-			</button>
-		</div>
-		<div class="col-xs-12 calendar-day nana">
-			12
-			<button class="btn shadow-none"
-				onclick=" window.open(this.href,'targetWindow','toolbar=no,location=no,status=no,menubar=no,scrollbars=yes,resizable=yes,width=100px,height=100px')">
-				<i class="fas fa-plus"></i>
-			</button>
-		</div>
-		<div class="col-xs-12 calendar-day nana">
-			13
-			<button class="btn shadow-none"
-				onclick=" window.open(this.href,'targetWindow','toolbar=no,location=no,status=no,menubar=no,scrollbars=yes,resizable=yes,width=100px,height=100px')">
-				<i class="fas fa-plus"></i>
-			</button>
-		</div>
-		<div class="col-xs-12 calendar-day nana">
-			14
-			<button class="btn shadow-none"
-				onclick=" window.open(this.href,'targetWindow','toolbar=no,location=no,status=no,menubar=no,scrollbars=yes,resizable=yes,width=100px,height=100px')">
-				<i class="fas fa-plus"></i>
-			</button>
-		</div>
-		<div class="col-xs-12 calendar-day nana">
-			15
-			<button class="btn shadow-none"
-				onclick=" window.open(this.href,'targetWindow','toolbar=no,location=no,status=no,menubar=no,scrollbars=yes,resizable=yes,width=100px,height=100px')">
-				<i class="fas fa-plus"></i>
-			</button>
-			<div class="events">
-				<div class="event">
-					<h4>Test</h4>
+	<div class="row"></div>
+</div>
+
+<!-- The Modal -->
+<div class="modal" id="myModal">
+	<div class="modal-dialog modal-lg">
+		<div class="modal-content">
+			<!-- Modal Header -->
+			<div class="modal-header">
+				<h4 class="modal-title">Create new date</h4>
+				<button type="button" class="close" data-dismiss="modal">&times;</button>
+			</div>
+			<!-- Modal body -->
+			<form>
+			<div class="modal-body">
+				<div class="row">
+					<div class="col-sm-2"><label>Title: </label></div>
+					<div class="col-sm-9"><input id="title" class="form-control" type="text" name="title"></div>
+				</div>
+				<div class="row">
+					<div class="col-sm-2"><label>Date: </label></div>
+					<div class="col-sm-9"><input id="date" class="form-control" type="date" name="date"></div>
+				</div>
+				<div class="row">
+					<div class="col-sm-2"><label>Description: </label></div>
+					<div class="col-sm-9"><textarea id="description" class="form-control" rows="3" name="description"></textarea></div>
+				</div>
+				<div class="row">
+					<div class="col-sm-2"><label>Category: </label></div>
+					<div class="col-sm-9">
+					<select id="category-options" class="form-control"></select>
+					</div>
 				</div>
 			</div>
+			<!-- Modal footer -->
+			<div class="modal-footer">
+				<button id="savebutton" type="submit" class="btn btn-success" value="Submit" data-dismiss="modal">Save</button>
+			</div>
+			</form>
 		</div>
-		<div class="col-xs-12 calendar-day nana">
-			16
-			<button class="btn shadow-none"
-				onclick=" window.open(this.href,'targetWindow','toolbar=no,location=no,status=no,menubar=no,scrollbars=yes,resizable=yes,width=100px,height=100px')">
-				<i class="fas fa-plus"></i>
-			</button>
-		</div>
-		<div class="col-xs-12 calendar-day nana">
-			17
-			<button class="btn shadow-none"
-				onclick=" window.open(this.href,'targetWindow','toolbar=no,location=no,status=no,menubar=no,scrollbars=yes,resizable=yes,width=100px,height=100px')">
-				<i class="fas fa-plus"></i>
-			</button>
-		</div>
-		<div class="col-xs-12 calendar-day nana">
-			18
-			<button class="btn shadow-none"
-				onclick=" window.open(this.href,'targetWindow','toolbar=no,location=no,status=no,menubar=no,scrollbars=yes,resizable=yes,width=100px,height=100px')">
-				<i class="fas fa-plus"></i>
-			</button>
-		</div>
-		<div class="col-xs-12 calendar-day nana">
-			19
-			<button class="btn shadow-none"
-				onclick=" window.open(this.href,'targetWindow','toolbar=no,location=no,status=no,menubar=no,scrollbars=yes,resizable=yes,width=100px,height=100px')">
-				<i class="fas fa-plus"></i>
-			</button>
-		</div>
-	</div>
-	<div class="row">
-		<div class="col-xs-12 calendar-day nana">
-			20
-			<button class="btn shadow-none"
-				onclick=" window.open(this.href,'targetWindow','toolbar=no,location=no,status=no,menubar=no,scrollbars=yes,resizable=yes,width=100px,height=100px')">
-				<i class="fas fa-plus"></i>
-			</button>
-		</div>
-		<div class="col-xs-12 calendar-day nana">
-			21
-			<button class="btn shadow-none"
-				onclick=" window.open(this.href,'targetWindow','toolbar=no,location=no,status=no,menubar=no,scrollbars=yes,resizable=yes,width=100px,height=100px')">
-				<i class="fas fa-plus"></i>
-			</button>
-		</div>
-		<div class="col-xs-12 calendar-day nana">
-			22
-			<button class="btn shadow-none"
-				onclick=" window.open(this.href,'targetWindow','toolbar=no,location=no,status=no,menubar=no,scrollbars=yes,resizable=yes,width=100px,height=100px')">
-				<i class="fas fa-plus"></i>
-			</button>
-		</div>
-		<div class="col-xs-12 calendar-day nana">
-			23
-			<button class="btn shadow-none"
-				onclick=" window.open(this.href,'targetWindow','toolbar=no,location=no,status=no,menubar=no,scrollbars=yes,resizable=yes,width=100px,height=100px')">
-				<i class="fas fa-plus"></i>
-			</button>
-		</div>
-		<div class="col-xs-12 calendar-day nana">
-			24
-			<button class="btn shadow-none"
-				onclick=" window.open(this.href,'targetWindow','toolbar=no,location=no,status=no,menubar=no,scrollbars=yes,resizable=yes,width=100px,height=100px')">
-				<i class="fas fa-plus"></i>
-			</button>
-		</div>
-		<div class="col-xs-12 calendar-day nana">
-			25
-			<button class="btn shadow-none"
-				onclick=" window.open(this.href,'targetWindow','toolbar=no,location=no,status=no,menubar=no,scrollbars=yes,resizable=yes,width=100px,height=100px')">
-				<i class="fas fa-plus"></i>
-			</button>
-		</div>
-		<div class="col-xs-12 calendar-day nana">
-			26
-			<button class="btn shadow-none"
-				onclick=" window.open(this.href,'targetWindow','toolbar=no,location=no,status=no,menubar=no,scrollbars=yes,resizable=yes,width=100px,height=100px')">
-				<i class="fas fa-plus"></i>
-			</button>
-		</div>
-	</div>
-	<div class="row">
-		<div class="col-xs-12 calendar-day nana">
-			27
-			<button class="btn shadow-none"
-				onclick=" window.open(this.href,'targetWindow','toolbar=no,location=no,status=no,menubar=no,scrollbars=yes,resizable=yes,width=100px,height=100px')">
-				<i class="fas fa-plus"></i>
-			</button>
-		</div>
-		<div class="col-xs-12 calendar-day nana">
-			28
-			<button class="btn shadow-none"
-				onclick=" window.open(this.href,'targetWindow','toolbar=no,location=no,status=no,menubar=no,scrollbars=yes,resizable=yes,width=100px,height=100px')">
-				<i class="fas fa-plus"></i>
-			</button>
-		</div>
-		<div class="col-xs-12 calendar-day nana">
-			29
-			<button class="btn shadow-none"
-				onclick=" window.open(this.href,'targetWindow','toolbar=no,location=no,status=no,menubar=no,scrollbars=yes,resizable=yes,width=100px,height=100px')">
-				<i class="fas fa-plus"></i>
-			</button>
-		</div>
-		<div class="col-xs-12 calendar-day nana">
-			30
-			<button class="btn shadow-none"
-				onclick=" window.open(this.href,'targetWindow','toolbar=no,location=no,status=no,menubar=no,scrollbars=yes,resizable=yes,width=100px,height=100px')">
-				<i class="fas fa-plus"></i>
-			</button>
-		</div>
-		<div class="col-xs-12 calendar-day nana">
-			31
-			<button class="btn shadow-none"
-				onclick=" window.open(this.href,'targetWindow','toolbar=no,location=no,status=no,menubar=no,scrollbars=yes,resizable=yes,width=100px,height=100px')">
-				<i class="fas fa-plus"></i>
-			</button>
-		</div>
-		<div class="col-xs-12 calendar-day calendar-no-current-month">
-			01</div>
-		<div class="col-xs-12 calendar-day calendar-no-current-month">
-			02</div>
 	</div>
 </div>
-<script>
-	$(document).ready(function() {
-		$("#demo").carousel("pause");
-	});
-</script>
+
+<div class="modal" id="myModal2">
+	<div class="modal-dialog modal-lg">
+		<div class="modal-content">
+			<!-- Modal Header -->
+			<div class="modal-header">
+				<h4 class="modal-title">Edit current date</h4>
+				<button type="button" class="close" data-dismiss="modal">&times;</button>
+			</div>
+			<!-- Modal body -->
+			<form>
+			<div class="modal-body">
+				<div class="row">
+					<div class="col-sm-2"><label>Title: </label></div>
+					<div class="col-sm-9"><input id="editTitle" class="form-control" type="text" name="title"></div>
+				</div>
+				<div class="row">
+					<div class="col-sm-2"><label>Date: </label></div>
+					<div class="col-sm-9"><input id="editDate" class="form-control" type="date" name="date"></div>
+				</div>
+				<div class="row">
+					<div class="col-sm-2"><label>Description: </label></div>
+					<div class="col-sm-9"><textarea id="editDescription" class="form-control" rows="3" name="description"></textarea></div>
+				</div>
+				
+				<div class="row">
+					<div class="col-sm-2"><label>Category: </label></div>
+					<div class="col-sm-9">
+					<select id="editCategory" class="form-control"></select>
+					</div>
+				</div>
+			</div>
+			<!-- Modal footer -->
+			<div class="modal-footer">
+				<button id="editEventButton" type="submit" class="btn btn-success" value="Submit" data-dismiss="modal">Save</button>
+				<button id="deleteEventButton" type="submit" class="btn btn-danger" value="Submit" data-dismiss="modal">Delete</button>
+			</div>
+			</form>
+		</div>
+	</div>
+</div>
+
+<script src="js/calendarConf.js"></script>
+<script src="js/calendar.js"></script>
+
